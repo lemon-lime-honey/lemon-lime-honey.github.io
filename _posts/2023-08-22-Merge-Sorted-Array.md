@@ -2,9 +2,8 @@
 layout: post
 title: Merge Sorted Array
 author: bs
-permalink: leetcode/:title
 date: '2022-08-22 23:37:00 +0900'
-last_modified_at: '2022-08-23 00:02:00 +0900'
+last_modified_at: '2022-08-23 00:05:00 +0900'
 category: leetcode
 tags: [leetcode, 알고리즘, pre-ob-be_1-1]
 ---
