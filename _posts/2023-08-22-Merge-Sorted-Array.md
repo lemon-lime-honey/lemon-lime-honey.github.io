@@ -1,13 +1,15 @@
 ---
 layout: post
-title: 88. Merge Sorted Array
+title: Merge Sorted Array
 author: bs
 permalink: leetcode/:title
 date: '2022-08-22 23:37:00 +0900'
-last_modified_at: '2022-08-22 23:40:00 +0900'
+last_modified_at: '2022-08-23 00:02:00 +0900'
 category: leetcode
 tags: [leetcode, 알고리즘, pre-ob-be_1-1]
 ---
+
+# [LeetCode 88. Merge Sorted Array](https://leetcode.com/problems/merge-sorted-array/)
 
 ## 원문
 You are given two integer arrays `nums1` and `nums2`, sorted in non-decreasing order, and two integers `m` and `n`, representing the number of elements in `nums1` and `nums2` respectively.
