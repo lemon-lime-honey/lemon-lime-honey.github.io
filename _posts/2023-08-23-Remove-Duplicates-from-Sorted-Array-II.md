@@ -2,8 +2,8 @@
 layout: post
 title:  Remove Duplicates from Sorted Array II
 author: bs
-date: '2022-08-23 11:28:00 +0900'
-last_modified_at: '2022-08-23 11:53:00 +0900'
+date: '2023-08-23 11:28:00 +0900'
+last_modified_at: '2023-08-23 11:53:00 +0900'
 category: leetcode
 tags: [leetcode, medium, 알고리즘, pre-ob-be_1-1]
 ---
