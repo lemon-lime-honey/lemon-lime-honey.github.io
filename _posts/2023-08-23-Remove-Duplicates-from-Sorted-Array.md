@@ -3,6 +3,7 @@ layout: post
 title:  Remove Duplicates from Sorted Array
 author: bs
 date: '2023-08-23 11:15:00 +0900'
+last_modified_at: '2023-08-23 13:34:00 +0900'
 category: leetcode
 tags: [leetcode, easy, 알고리즘, pre-ob-be_1-1]
 ---
@@ -19,8 +20,9 @@ Consider the number of unique elements of `nums` to be `k`, to get accepted, you
 - Return `k`.
 
 ## 내 생각
-1. ~~`set`으로 변환시켜준 후 다시 리스트로 변환하고 정렬해준다.~~<br>
-  : `nums`의 0번째부터 `k - 1`번째 원소를 포함한 리스트가 출력된다.
+1. `set`으로 변환시켜준 후 다시 리스트로 변환하고 정렬해준다.<br>
+  ~~: `nums`의 0번째부터 `k - 1`번째 원소를 포함한 리스트가 출력된다.~~<br>
+  : `nums[:] = list(set(nums))`
 2. 이전 값을 저장할 변수 `before`, 숫자를 입력할 위치의 인덱스를 가리키는 변수 `ref`, 결과에 들어가는 숫자의 개수를 세는 변수 `k`<br>
   리스트를 순회하며 `before`와 다른 값이 나오면 `nums[ref]`를 해당 값으로 바꾸고 `k`에 1을 더한다.<br>
   `before`값을 갱신하고 `ref`에도 1을 더해준다.
