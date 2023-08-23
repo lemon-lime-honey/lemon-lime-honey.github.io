@@ -20,7 +20,7 @@ Return `k` *after placing the final result in the first* `k` *slots of* `nums`.
 Do **not** allocate extra space for another array. You must do this by **modifying the input array in-place** with O(1) extra memory.
 
 ## 내 생각
-[Remove Duplicates from Sorted Array]({% post_link 2023-08-23-Remove-Duplicates-from-Sorted-Array %}) 문제에서 통과한 코드를 변형한다.<br>
+[Remove Duplicates from Sorted Array]({% link _posts/2023-08-23-Remove-Duplicates-from-Sorted-Array.md %}) 문제에서 통과한 코드를 변형한다.<br>
 `before`를 정수 변수로 두는 대신 두 개의 정수를 원소로 가지는 리스트로 만든다. 이때 `before[0]`은 이전 값, `before[1]`은 나온 횟수이다.<br>
 `nums`를 순회하며 `before[0]`이 해당 값과 다를 때와 같지만 나온 횟수가 2보다 적을 때로 나누어 다룬다.<br>
 그 외의 경우는 `continue`
