@@ -20,7 +20,7 @@ timezone: Asia/Seoul
 
 title: C A N D Y # the main title
 
-tagline: 사탕 안먹는 사람 # it will display as the sub-title
+tagline: lime lemon candy # it will display as the sub-title
 
 description: >- # used by seo meta and the atom feed
   C A N D Y
@@ -113,6 +113,9 @@ pwa:
   enabled: true # the option for PWA feature
 
 paginate: 10
+
+plugins:
+  - jemoji
 
 # ------------ The following options are not recommended to be modified ------------------
 
