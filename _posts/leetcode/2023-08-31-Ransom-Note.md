@@ -1,8 +1,9 @@
 ---
 layout: post
-title:  Random Note
+title:  Ransom Note
 author: bs
 date: '2023-08-31 20:27:00 +0900'
+last_modified_at: '2023-08-31 21:49:00 +0900'
 category: leetcode
 tags: [leetcode, easy, 알고리즘, pre-ob-be_2-1]
 ---
