@@ -34,7 +34,7 @@ body {
     env(safe-area-inset-bottom) env(safe-area-inset-left);
   color: var(--text-color);
   -webkit-font-smoothing: antialiased;
-  font-family: $font-family-add, $font-family-base;
+  font-family: $font-family-base;
 }
 
 /* --- Typography --- */
@@ -1173,7 +1173,7 @@ $btn-mb: 0.5rem;
   }
 
   .toast-body {
-    font-family: GmearketSansMedium, Lato, sans-serif;
+    font-family: GmearketSansMedium, Pretendard, Lato, sans-serif;
     line-height: 1.25rem;
 
     button {
