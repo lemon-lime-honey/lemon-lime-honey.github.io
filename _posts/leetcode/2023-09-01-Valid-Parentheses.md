@@ -2,7 +2,7 @@
 layout: post
 title:  Valid Parentheses
 author: bs
-date: '2023-08-31 21:02:00 +0900'
+date: '2023-09-01 20:33:00 +0900'
 category: leetcode
 tags: [leetcode, easy, 알고리즘]
 ---
