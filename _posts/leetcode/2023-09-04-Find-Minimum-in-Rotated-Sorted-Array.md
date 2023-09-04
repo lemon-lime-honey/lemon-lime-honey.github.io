@@ -2,7 +2,7 @@
 layout: post
 title:  Find Minimum in Rotated Sorted Array
 author: bs
-date: '2023-09-03 17:02:00 +0900'
+date: '2023-09-04 17:02:00 +0900'
 category: leetcode
 tags: [leetcode, medium, 알고리즘, pre-ob-be_2-2]
 ---
