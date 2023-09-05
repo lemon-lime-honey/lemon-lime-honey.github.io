@@ -3,8 +3,9 @@ layout: post
 title:  Minimum Absolute Difference in BST
 author: bs
 date: '2023-09-05 21:38:00 +0900'
+last_modified_at: '2023-09-05 21:54:00 +0900'
 category: leetcode
-tags: [leetcode, easy, 알고리즘, pre-ob-be_2-2]
+tags: [leetcode, easy, 알고리즘, pre-ob-be_3-1]
 ---
 
 # [LeetCode 530. Minimum Absolute Difference in BST](https://leetcode.com/problems/minimum-absolute-difference-in-bst/)
