@@ -2,7 +2,7 @@
 layout: post
 title:  Average of Levels in Binary Tree
 author: bs
-date: '2023-09-06 09:15:00 +0900'
+date: '2023-09-07 21:15:00 +0900'
 category: leetcode
 tags: [leetcode, easy, 알고리즘, pre-ob-be_3-1]
 ---

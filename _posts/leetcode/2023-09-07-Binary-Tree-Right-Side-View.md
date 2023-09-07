@@ -2,7 +2,7 @@
 layout: post
 title:  Binary Tree Right Side View
 author: bs
-date: '2023-09-06 09:12:00 +0900'
+date: '2023-09-07 21:12:00 +0900'
 category: leetcode
 tags: [leetcode, medium, 알고리즘, pre-ob-be_3-1]
 ---
