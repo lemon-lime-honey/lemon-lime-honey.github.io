@@ -1,6 +1,6 @@
 ---
 layout: post
-title: [Recipe Original] 레시피 생성
+title: '[Recipe: Original] 레시피 생성'
 author: bs
 date: '2023-09-12 23:17:00 +0900'
 last_modified_at: '2023-09-12 23:24:00 +0900'
