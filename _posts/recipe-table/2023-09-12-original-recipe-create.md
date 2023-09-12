@@ -3,11 +3,14 @@ layout: post
 title: [Recipe: Original] 레시피 생성
 author: bs
 date: '2023-09-12 23:17:00 +0900'
+last_modified_at: '2023-09-12 23:24:00 +0900'
 category: recipe-table
 tags: [Django, project]
 ---
 
 ## 모델
+
+
 | 이름 | 설명 |
 | -- | -- |
 | Ingredient | 재료 |
@@ -15,12 +18,16 @@ tags: [Django, project]
 | RecipeStep | 레시피 과정(단계) |
 | RecipeIngredient | 레시피에 들어가는 재료와 양 |
 
+
 ## 폼
+
+
 | 이름 | 설명 |
 | --- | --- |
 | RecipeForm | 레시피 등록 폼 |
 | RecipeIngredientFormSet | 레시피 재료 등록용 formset |
 | RecipeStepFormSet | 레시피 단계 등록용 formset |
+
 
 #### RecipeIngredientFormSet
 ```python
