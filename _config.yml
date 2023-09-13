@@ -20,7 +20,7 @@ timezone: Asia/Seoul
 
 title: C A N D Y # the main title
 
-tagline: lime lemon candy # it will display as the sub-title
+tagline: lime-lemon-candy # it will display as the sub-title
 
 description: >- # used by seo meta and the atom feed
   C A N D Y
@@ -177,15 +177,18 @@ compress_html:
   ignore:
     envs: [development]
 
+include:
+ - _javascript
+
 exclude:
   - "*.gem"
   - "*.gemspec"
+  - docs
   - tools
   - README.md
   - CHANGELOG.md
   - LICENSE
   - rollup.config.js
-  - node_modules
   - package*.json
 
 jekyll-archives:
