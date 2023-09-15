@@ -3,7 +3,7 @@ layout: post
 title: '[Recipe: Original] 레시피 생성'
 author: bs
 date: '2023-09-12 23:17:00 +0900'
-last_modified_at: '2023-09-13 13:01:00 +0900'
+last_modified_at: '2023-09-15 11:10:00 +0900'
 category: recipe-table
 tags: [Django, project]
 render_with_liquid: false
@@ -76,7 +76,7 @@ def get(self, *args, **kwargs):
     ingredientformset = RecipeIngredientFormSet(
         queryset=RecipeIngredient.objects.none()
     )
-    stepformset = RecipeSteipFormSet(
+    stepformset = RecipeStepFormSet(
         queryset=RecipeStep.objects.none()
     )
     form = RecipeForm()
