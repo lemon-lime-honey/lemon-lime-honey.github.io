@@ -3,6 +3,7 @@ layout: post
 title:  Word Ladder
 author: bs
 date: '2023-09-14 21:00:00 +0900'
+last_modified_at: '2023-09-15 17:00:00 +0900'
 category: leetcode
 tags: [leetcode, hard, 알고리즘, pre-ob-be_4-1]
 ---
@@ -71,6 +72,7 @@ class Solution:
         1. 그 패턴에 해당하는 단어가 방문 처리 되어 있지 않다면 방문처리하고 큐에 넣는다.
     3. 초반 큐의 길이만큼 순회했다면 `result`에 `1`을 더해준다.
 8. 반복문에서 `result`를 반환하지 않고 나왔다면 `0`을 반환한다.
+
 ### 코드
 ```python
 from collections import defaultdict, deque
