@@ -3,7 +3,7 @@ layout: post
 title: Django REST Framework
 author: bs
 date: '2023-08-24 18:26:00 +0900'
-last_modified_at: '2023-09-14 12:31:00 +0900'
+last_modified_at: '2023-09-20 18:31:00 +0900'
 category: DRF
 tags: [Django, DRF]
 ---
@@ -19,3 +19,4 @@ tags: [Django, DRF]
 - [Routers]({% link _posts/DRF/2023-09-09-routers.md %})
 - [Parsers]({% link _posts/DRF/2023-09-10-parsers.md %})
 - [Renderers]({% link _posts/DRF/2023-09-14-renderers.md %})
+- [Serializers]({% link _posts/DRF/2023-09-20-serializers.md %})
