@@ -3,6 +3,7 @@ layout: post
 title: Serializers
 author: bs
 date: '2023-09-20 18:33:00 +0900'
+last_modified_at: '2023-09-20 19:40:00 +0900'
 category: DRF
 tags: [Django, DRF]
 render_with_liquid: false
@@ -144,7 +145,7 @@ serializer = CommentSerializer(comment, data=data)
 `.save()`를 호출할 때 추가 키워드 인자를 포함하면 그렇게 할 수 있다. 예를 들면:
 
 ```python
-serializer.save(owner=request.user)`
+serializer.save(owner=request.user)
 ```
 
 모든 추가 키워드 인자는 `.create()` 혹은 `.update()`가 호출되었을 때 `validated_data` 인자에 포함된다.
