@@ -3,7 +3,7 @@ layout: post
 title:  레시피 사이트 프로젝트 재작성
 author: bs
 date: '2023-09-12 22:54:00 +0900'
-last_modified_at: '2023-09-22 20:38:00 +0900'
+last_modified_at: '2023-09-23 18:42:00 +0900'
 category: recipe-table
 tags: [Django, project]
 ---
@@ -17,3 +17,4 @@ tags: [Django, project]
 ## 리메이크
 - [1. 회원가입, 로그인, 로그아웃]({% link _posts/recipe-table/2023-09-17-remake-account.md %})
 - [2. 레시피 등록, 수정, 삭제]({% link _posts/recipe-table/2023-09-22-remake-recipe.md %})
+- [3. Permission]({% link _posts/recipe-table/2023-09-23-permission.md %})
