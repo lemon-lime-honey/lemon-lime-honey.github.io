@@ -3,6 +3,7 @@ layout: post
 title:  Best Time to Buy and Sell Stock II
 author: bs
 date: '2023-08-23 20:18:00 +0900'
+last_modified_at: '2023-10-29 12:13:00 +0900'
 category: leetcode
 tags: [leetcode, medium, 알고리즘, pre-ob-be_1-1]
 ---
@@ -16,7 +17,7 @@ On each day, you may decide to buy and/or sell the stock. You can only hold **at
 
 Find and return *the **maximum** profit* you can achieve.
 
-## 내 생각
+## 발상
 `i`일에 사서 `j`일에 팔 때의 수익을 2차원 그래프로 나타내보고 거기서 규칙을 찾아보자.<br>
 : 장렬히 실패
 
@@ -31,6 +32,7 @@ We want to buy all the stocks when the line is going up. And want to ignore all 
 이 말대로 상승하는 경우만 더했다.
 
 ## 코드
+### Python
 ```python
 class Solution:
     def maxProfit(self, prices: List[int]) -> int:
@@ -39,4 +41,21 @@ class Solution:
             if prices[i] < prices[i + 1]:
                 profit += prices[i + 1] - prices[i]
         return profit
+```
+
+### Java
+```java
+class Solution {
+    public int maxProfit(int[] prices) {
+        int profit = 0;
+
+        for (int i = 0; i < prices.length - 1; i++) {
+            if (prices[i] < prices[i + 1]) {
+                profit += prices[i + 1] - prices[i];
+            }
+        }
+
+        return profit;
+    }
+}
 ```
