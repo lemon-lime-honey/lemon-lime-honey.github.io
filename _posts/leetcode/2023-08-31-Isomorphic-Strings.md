@@ -5,7 +5,7 @@ author: bs
 date: '2023-08-31 20:47:00 +0900'
 last_modified_at: '2023-11-16 13:11:00 +0900'
 category: leetcode
-tags: [leetcode, easy, 알고리즘, pre-ob-be_2-1]
+tags: [leetcode, easy, 알고리즘]
 ---
 
 # [LeetCode 205. Isomorphic Strings](https://leetcode.com/problems/isomorphic-strings/description/)
