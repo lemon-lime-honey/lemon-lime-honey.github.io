@@ -4,7 +4,7 @@ title:  Longest Consecutive Sequence
 author: bs
 date: '2023-08-31 21:43:00 +0900'
 category: leetcode
-tags: [leetcode, medium, 알고리즘, pre-ob-be_2-1]
+tags: [leetcode, medium, 알고리즘]
 ---
 
 # [LeetCode 128. Longest Consecutive Sequence](https://leetcode.com/problems/longest-consecutive-sequence/)
@@ -14,8 +14,9 @@ Given an unsorted array of integers `nums`, return *the length of the longest co
 
 You must write an algorithm that runs in `O(n)` time.
 
-## 내 생각
-(Python)`heapq` 모듈의 `heapify`를 사용해 `nums`를 최소 힙으로 바꿔준다.<br>
+## 풀이
+### Python
+`heapq` 모듈의 `heapify`를 사용해 `nums`를 최소 힙으로 바꿔준다.<br>
 0이 세 개 있는 리스트를 만드는데, 첫 번째 원소는 직전 값, 두 번째는 현재 수열의 길이, 세 번째는 수열 길이의 최대값을 나타낸다.
 
 `while`문 안에서 `heappop()` 메서드를 사용해 `nums`의 최소값을 빼낸다.
@@ -27,6 +28,7 @@ You must write an algorithm that runs in `O(n)` time.
 반복문에서 나오면 리스트의 세 번째 원소를 반환한다.
 
 ## 코드
+### Python
 ```python
 import heapq
 

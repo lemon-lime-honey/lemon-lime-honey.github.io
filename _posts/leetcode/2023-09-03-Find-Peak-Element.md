@@ -4,7 +4,7 @@ title:  Find Peak Element
 author: bs
 date: '2023-09-03 14:16:00 +0900'
 category: leetcode
-tags: [leetcode, medium, 알고리즘, pre-ob-be_2-2]
+tags: [leetcode, medium, 알고리즘]
 ---
 
 # [LeetCode 162. Find Peak Element](https://leetcode.com/problems/find-peak-element/)
@@ -31,6 +31,7 @@ start가 end보다 작고, mid 원소를 찾을 때까지 반복문을 순회한
 ```
 
 ## 코드
+### Python
 ```python
 class Solution:
     def findPeakElement(self, nums: List[int]) -> int:

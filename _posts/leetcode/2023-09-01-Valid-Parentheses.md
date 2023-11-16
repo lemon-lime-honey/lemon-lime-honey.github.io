@@ -18,7 +18,7 @@ An input string is valid if:
 2. Open brackets must be closed in the correct order.
 3. Every close bracket has a corresponding open bracket of the same type.
 
-## 내 생각
+## 풀이
 1. 문자열을 순회한다.
 2. 문자가 여는 괄호인 경우 스택에 넣는다.
 3. 문자가 닫는 괄호인 경우
@@ -29,6 +29,7 @@ An input string is valid if:
 5. 비어있으면 `True`를 반환한다.
 
 ## 코드
+### Python
 ```python
 class Solution:
     def isValid(self, s: str) -> bool:

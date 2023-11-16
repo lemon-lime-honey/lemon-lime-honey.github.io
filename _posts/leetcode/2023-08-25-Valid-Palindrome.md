@@ -5,7 +5,7 @@ author: bs
 date: '2023-08-25 21:00:00 +0900'
 last_modified_at: '2023-10-18 22:17:00 +0900'
 category: leetcode
-tags: [leetcode, easy, 알고리즘, pre-ob-be_1-2]
+tags: [leetcode, easy, 알고리즘]
 ---
 
 # [LeetCode 125. Valid Palindrome](https://leetcode.com/problems/valid-palindrome)

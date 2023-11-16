@@ -4,7 +4,7 @@ title:  Happy Number
 author: bs
 date: '2023-08-31 21:34:00 +0900'
 category: leetcode
-tags: [leetcode, easy, 알고리즘, pre-ob-be_2-1]
+tags: [leetcode, easy, 알고리즘]
 ---
 
 # [LeetCode 202. Happy Number](https://leetcode.com/problems/happy-number/)
@@ -20,7 +20,7 @@ A **happy number** is a number defined by the following process.
 
 Return `true` *if* `n` *is a happy number, and* `false` *if not*.
 
-## 내 생각
+## 풀이
 `n`이 있는 세트를 하나 만든다.<br>
 `while`문 안에서 또 `while`문을 도는데, 내부에 있는 반복문으로는 각 자리수 숫자의 제곱의 합을 구한다.<br>
 내부 반복문을 통해 구한 값이 1이면 `True`를 반환한다.<br>
@@ -28,6 +28,7 @@ Return `true` *if* `n` *is a happy number, and* `false` *if not*.
 둘 모두가 아닌 경우 그 값을 세트에 추가한다.
 
 ## 코드
+### Python
 ```python
 class Solution:
     def isHappy(self, n: int) -> bool:

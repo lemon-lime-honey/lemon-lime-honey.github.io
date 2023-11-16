@@ -4,7 +4,7 @@ title:  Snakes and Ladders
 author: bs
 date: '2023-09-14 20:35:00 +0900'
 category: leetcode
-tags: [leetcode, medium, 알고리즘, pre-ob-be_4-1]
+tags: [leetcode, medium, 알고리즘]
 ---
 
 # [LeetCode 909. Snakes and Ladders](https://leetcode.com/problems/snakes-and-ladders/)

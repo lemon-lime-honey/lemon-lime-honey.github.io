@@ -4,7 +4,7 @@ title:  Kth Smallest Element in a BST
 author: bs
 date: '2023-09-06 09:32:00 +0900'
 category: leetcode
-tags: [leetcode, medium, 알고리즘, pre-ob-be_3-1]
+tags: [leetcode, medium, 알고리즘]
 ---
 
 # [LeetCode 230. Kth Smallest Element in a BST](https://leetcode.com/problems/kth-smallest-element-in-a-bst/)
@@ -16,6 +16,7 @@ Given the `root` of a binary search tree, and an integer `k`, return *the* <code
 이진 탐색 트리에서 중위 순회를 하면 정렬된 순서로 노드에 방문하는 셈이기 때문에 중위 순회를 한다.
 
 ### 코드
+### Python
 ```python
 class Solution:
     def kthSmallest(self, root: Optional[TreeNode], k: int) -> int:
@@ -40,6 +41,7 @@ class Solution:
 중위 순회를 한다는 발상은 같지만 중위 순회를 통해 정렬된 리스트 자체를 구해 거기서 `k`번째 원소를 반환했다.
 
 ### 코드
+### Python
 ```python
 class Solution:
     def kthSmallest(self, root: Optional[TreeNode], k: int) -> int:

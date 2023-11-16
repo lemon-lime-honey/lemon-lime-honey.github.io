@@ -5,7 +5,7 @@ author: bs
 date: '2023-09-04 17:02:00 +0900'
 last_modified_at: '2023-09-04 17:10:00 +0900'
 category: leetcode
-tags: [leetcode, medium, 알고리즘, pre-ob-be_2-2]
+tags: [leetcode, medium, 알고리즘]
 ---
 
 # [LeetCode 153. Find Minimum in Rotated Sorted Array](https://leetcode.com/problems/find-minimum-in-rotated-sorted-array/)
@@ -22,7 +22,7 @@ Given the sorted rotated array `nums` of **unique** elements, return *the minimu
 
 You must write an algorithm that runs in `O(log n)` time.
 
-## 내 생각
+## 풀이
 [Search in Rotated Sorted Array]({% link _posts/leetcode/2023-09-03-Search-in-Rotated-Sorted-Array.md %})에서 힌트를 얻었다.
 
 1. 이분 탐색을 시행한다.
@@ -34,6 +34,7 @@ You must write an algorithm that runs in `O(log n)` time.
 2. 반복문 중간에서 값을 반환하지 않은 경우 `nums[lo]`를 반환한다.
 
 ## 코드
+### Python
 ```python
 class Solution:
     def findMin(self, nums: List[int]) -> int:

@@ -3,6 +3,7 @@ layout: post
 title:  Isomorphic Strings
 author: bs
 date: '2023-08-31 20:47:00 +0900'
+last_modified_at: '2023-11-16 13:11:00 +0900'
 category: leetcode
 tags: [leetcode, easy, 알고리즘, pre-ob-be_2-1]
 ---
@@ -16,7 +17,7 @@ Two strings `s` and `t` are isomorphic if the characters in `s` can be replaced 
 
 All occurrences of a character must be replaced with another character while preserving the order of characters. No two characters may map to the same character, but a character may map to itself.
 
-## 내 생각
+## 풀이
 `s`와 `t`를 같이 순회한다.<br>
 두 문자열을 순회하며 문자를 키로, 매핑된 것을 값으로 가질 딕셔너리를 두 개 생성한다.<br>
 순회할 차례가 된 문자 두 가지 모두 각 딕셔너리에 없으면 딕셔너리에 추가해준다.<br>
@@ -24,6 +25,7 @@ All occurrences of a character must be replaced with another character while pre
 순회를 끝냈다면 `True`를 반환한다.
 
 ## 코드
+### Python
 ```python
 class Solution:
     def isIsomorphic(self, s: str, t: str) -> bool:
@@ -41,4 +43,32 @@ class Solution:
                 if sdict[s[i]] != tdict[t[i]]: break
         else: return True
         return False
+```
+
+### Java
+```java
+import java.util.HashMap;
+
+class Solution {
+    public boolean isIsomorphic(String s, String t) {
+        HashMap<Character, Integer> sMap = new HashMap<>();
+        HashMap<Character, Integer> tMap = new HashMap<>();
+        int ref = 0;
+
+        for (int i = 0; i < s.length(); i++) {
+            if (!sMap.containsKey(s.charAt(i)) && !tMap.containsKey(t.charAt(i))) {
+                sMap.put(s.charAt(i), ref);
+                tMap.put(t.charAt(i), ref);
+                ref++;
+            } else if (!sMap.containsKey(s.charAt(i)) || !tMap.containsKey(t.charAt(i))) {
+                return false;
+            } else {
+                if (sMap.get(s.charAt(i)) != tMap.get(t.charAt(i))) {
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+}
 ```

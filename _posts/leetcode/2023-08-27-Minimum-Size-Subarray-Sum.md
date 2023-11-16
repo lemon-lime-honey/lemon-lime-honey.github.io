@@ -4,7 +4,7 @@ title:  Minimum Size Subarray Sum
 author: bs
 date: '2023-08-27 21:45:00 +0900'
 category: leetcode
-tags: [leetcode, medium, 알고리즘, pre-ob-be_1-2]
+tags: [leetcode, medium, 알고리즘]
 ---
 
 
@@ -31,6 +31,7 @@ Given an array of positive integers `nums` and a positive integer `target`, retu
 3. `result`의 값이 변하지 않은 경우, 즉 초기값인 경우 `0`을, 그렇지 않은 경우 `result`를 반환한다.
 
 ## 코드
+### Python
 ```python
 class Solution:
     def minSubArrayLen(self, target: int, nums: List[int]) -> int:

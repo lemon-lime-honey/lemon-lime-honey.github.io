@@ -4,7 +4,7 @@ title:  Evaluate Reverse Polish Notation
 author: bs
 date: '2023-08-30 16:36:00 +0900'
 category: leetcode
-tags: [leetcode, medium, 알고리즘, pre-ob-be_2-1]
+tags: [leetcode, medium, 알고리즘]
 ---
 
 # [LeetCode 150. Evaluate Reverse Polish Notation](https://leetcode.com/problems/evaluate-reverse-polish-notation/)
@@ -23,12 +23,13 @@ Evaluate the expression. Return *an integer that represents the value of the exp
 - The input represents a valid arithmetic expression in a reverse polish notation.
 - The answer and all the intermediate calculations can be represented in a **32-bt** integer.
 
-## 내 생각
+## 풀이
 `tokens`를 순회하며 `tokens[i]`가 숫자이면 스택에 넣는다.<br>
 아니면 스택의 가장 마지막 두 원소를 `pop`해 `tokens[i]`에 해당하는 연산을 수행한 후 그 값을 스택에 넣는다.
 
 ## 코드
-### `eval()`을 사용한 경우
+### Python
+#### `eval()`을 사용한 경우
 118ms. 5.88%가 나와서 다시 생각해보니 계산값을 구할 때 `eval()`을 사용하고 캐스팅(두 번!)도 해서 그런게 아닌가 싶더라.
 
 ```python
@@ -46,7 +47,7 @@ class Solution:
 
 그래서 `eval()`을 사용하지 않고 다시 제출했다.
 
-### `eval()`을 사용하지 않은 경우
+#### `eval()`을 사용하지 않은 경우
 64ms. 96.77%
 
 ```python

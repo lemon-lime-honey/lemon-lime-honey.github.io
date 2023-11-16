@@ -4,7 +4,7 @@ title:  Merge Two Sorted Lists
 author: bs
 date: '2023-08-28 21:38:00 +0900'
 category: leetcode
-tags: [leetcode, easy, 알고리즘, pre-ob-be_1-2]
+tags: [leetcode, easy, 알고리즘]
 ---
 
 # [LeetCode 21. Merge Two Sorted Lists](https://leetcode.com/problems/merge-two-sorted-lists/)
@@ -16,11 +16,12 @@ Merge the two lists into one **sorted** list. The list should be made by splicin
 
 Return *the head of the merged linked list*.
 
-## 내 생각
+## 풀이
 값을 비교해가며 새로운 연결 리스트에 추가한다.<br>
 둘 중 하나가 더 짧은 경우 짧은 쪽의 순회가 끝나면 결과 연결 리스트의 `tail`의 `next`를 긴 쪽의 다음 순회 차례 노드로 지정한다.
 
 ## 코드
+### Python
 ```python
 class Solution:
     def mergeTwoLists(self, list1: Optional[ListNode], list2: Optional[ListNode]) -> Optional[ListNode]:

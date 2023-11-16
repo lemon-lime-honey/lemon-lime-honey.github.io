@@ -5,7 +5,7 @@ author: bs
 date: '2023-08-22 23:37:00 +0900'
 last_modified_at: '2023-10-17 16:58:00 +0900'
 category: leetcode
-tags: [leetcode, easy, 알고리즘, pre-ob-be_1-1]
+tags: [leetcode, easy, 알고리즘]
 ---
 
 # [LeetCode 88. Merge Sorted Array](https://leetcode.com/problems/merge-sorted-array/)

@@ -4,7 +4,7 @@ title:  Design Add and Search Words Data Structure
 author: bs
 date: '2023-09-10 19:46:00 +0900'
 category: leetcode
-tags: [leetcode, medium, 알고리즘, pre-ob-be_3-2]
+tags: [leetcode, medium, 알고리즘]
 ---
 
 # [LeetCode 211. Design Add and Search Words Data Structure](https://leetcode.com/problems/design-add-and-search-words-data-structure/)
@@ -18,7 +18,7 @@ Implement the `WordDictionary` class:
 - `void addWord(word)` Adds `word` to the data structure, it can be matched later.
 - `bool search(word)` Returns `true` if there is any string in the data structure that matches `word` or `false` otherwise. `word` may contain dots `'.'` where dots can be matched with any letter.
 
-## 내 생각
+## 풀이
 [Implement Trie (Prefix Tree)]({% link _posts/leetcode/2023-09-08-Implement-Trie-Prefix-Tree.md %})의 답안을 조금 수정했다.
 
 와일드카드를 포함한 문자열 또한 검색해야 하기 때문에 `search`를 수정하는데...
@@ -31,6 +31,7 @@ Implement the `WordDictionary` class:
 재귀를 사용해 구현했다.
 
 ## 코드
+### Python
 ```python
 class Node:
     def __init__(self):

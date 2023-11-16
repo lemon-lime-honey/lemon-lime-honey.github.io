@@ -5,7 +5,7 @@ author: bs
 date: '2023-08-23 10:50:00 +0900'
 last_modified_at: '2023-10-11 18:21:00 +0900'
 category: leetcode
-tags: [leetcode, easy, 알고리즘, pre-ob-be_1-1]
+tags: [leetcode, easy, 알고리즘]
 ---
 
 # [LeetCode 27. Remove Element](https://leetcode.com/problems/remove-element/)

@@ -5,7 +5,7 @@ author: bs
 date: '2023-09-14 21:00:00 +0900'
 last_modified_at: '2023-09-15 17:00:00 +0900'
 category: leetcode
-tags: [leetcode, hard, 알고리즘, pre-ob-be_4-1]
+tags: [leetcode, hard, 알고리즘]
 ---
 
 # [LeetCode 127. Word Ladder](https://leetcode.com/problems/word-ladder/)

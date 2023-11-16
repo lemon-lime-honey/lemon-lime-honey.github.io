@@ -5,7 +5,7 @@ author: bs
 date: '2023-08-23 20:18:00 +0900'
 last_modified_at: '2023-10-29 12:13:00 +0900'
 category: leetcode
-tags: [leetcode, medium, 알고리즘, pre-ob-be_1-1]
+tags: [leetcode, medium, 알고리즘]
 ---
 
 # [LeetCode 122. Best Time to Buy and Sell Stock II](https://leetcode.com/problems/best-time-to-buy-and-sell-stock-ii/)

@@ -4,7 +4,7 @@ title:  Search a 2D Matrix
 author: bs
 date: '2023-08-28 19:36:00 +0900'
 category: leetcode
-tags: [leetcode, medium, 알고리즘, pre-ob-be_1-2]
+tags: [leetcode, medium, 알고리즘]
 ---
 
 # [LeetCode 74. Search a 2D Matrix](https://leetcode.com/problems/search-a-2d-matrix/)
@@ -19,12 +19,13 @@ Given an integer `target`, return `true` *if* `target` *is in* `matrix` *or* `fa
 
 You must write a solution in `O(log(m * n))` time complexity.
 
-## 내 생각
+## 풀이
 이분 탐색을 이용해 어느 행에 원소가 있는지 찾는다. 그 다음 다시 이분 탐색으로 해당 행의 어느 열에 원소가 있는지 찾는다.<br>
 두 번째 이분 탐색에서 원소를 찾지 못하면 `false`, 찾으면 `true`를 반환한다.<br>
 이분 탐색을 두 번 하기 때문에 시간 복잡도가 `O(log(m) + log(n)) = O(log(m * n))`이다.
 
 ## 코드
+### Python
 ```python
 class Solution:
     def searchMatrix(self, matrix: List[List[int]], target: int) -> bool:

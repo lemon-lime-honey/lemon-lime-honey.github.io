@@ -5,7 +5,7 @@ author: bs
 date: '2023-08-23 11:28:00 +0900'
 last_modified_at: '2023-10-29 12:14:00 +0900'
 category: leetcode
-tags: [leetcode, medium, 알고리즘, pre-ob-be_1-1]
+tags: [leetcode, medium, 알고리즘]
 ---
 
 # [LeetCode 80. Remove Duplicates from Sorted Array II](https://leetcode.com/problems/remove-duplicates-from-sorted-array-ii/)

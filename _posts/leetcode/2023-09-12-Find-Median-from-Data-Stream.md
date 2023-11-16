@@ -4,7 +4,7 @@ title:  Find Median from Data Stream
 author: bs
 date: '2023-09-12 09:12:00 +0900'
 category: leetcode
-tags: [leetcode, hard, 알고리즘, pre-ob-be_3-2]
+tags: [leetcode, hard, 알고리즘]
 ---
 
 # [LeetCode 295. Find Median from Data Stream](https://leetcode.com/problems/find-median-from-data-stream/)
@@ -40,6 +40,7 @@ Implement the MedianFinder class:
     2. 두 힙의 크기가 다를 때 `addNum`에서 힙의 크기가 같을 때 추가되는 값을 어디에 넣었냐에 따라 값을 반환한다.
 
 ## 코드
+### Python
 ```python
 import heapq
 

@@ -4,7 +4,7 @@ title:  Implement Trie (Prefix Tree)
 author: bs
 date: '2023-09-08 18:18:00 +0900'
 category: leetcode
-tags: [leetcode, medium, 알고리즘, pre-ob-be_3-2]
+tags: [leetcode, medium, 알고리즘]
 ---
 
 # [LeetCode 208. Implement Trie (Prefix Tree)](https://leetcode.com/problems/implement-trie-prefix-tree/)
@@ -46,6 +46,7 @@ Implement the Trie class:
         3. `True`를 반환한다.
 
 ## 코드
+### Python
 ```python
 class Node:
     def __init__(self):

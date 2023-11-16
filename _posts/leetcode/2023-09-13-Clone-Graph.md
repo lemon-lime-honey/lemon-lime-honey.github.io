@@ -4,7 +4,7 @@ title:  Clone Graph
 author: bs
 date: '2023-09-13 09:12:00 +0900'
 category: leetcode
-tags: [leetcode, medium, 알고리즘, pre-ob-be_4-1]
+tags: [leetcode, medium, 알고리즘]
 ---
 
 # [LeetCode 133. Clone Graph](https://leetcode.com/problems/clone-graph/)
@@ -31,7 +31,7 @@ For simplicity, each node's value is the same as the node's index (1-indexed). F
 
 The given node will always be the first node with `val = 1`. You must return the **copy of the given node** as a reference to the cloned graph.
 
-## 내 생각
+## 풀이
 1. 방문 처리 및 복제 노드 기록 용으로 딕셔너리를 하나 생성한다.
 2. 먼저 입력받은 노드를 복제하고 큐에 넣는다.
 3. BFS로 그래프를 순회한다.
@@ -48,6 +48,7 @@ The given node will always be the first node with `val = 1`. You must return the
 4. 순회가 끝나면 입력 받은 노드와 같은 값을 가진 복제 노드를 반환한다. 
 
 ## 코드
+### Python
 ```python
 from collections import deque
 from typing import Optional

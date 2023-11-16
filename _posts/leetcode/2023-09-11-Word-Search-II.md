@@ -4,7 +4,7 @@ title:  Word Search II
 author: bs
 date: '2023-09-11 23:19:00 +0900'
 category: leetcode
-tags: [leetcode, hard, 알고리즘, pre-ob-be_3-2]
+tags: [leetcode, hard, 알고리즘]
 ---
 
 # [LeetCode 212. Word Search II](https://leetcode.com/problems/word-search-ii/)
@@ -93,6 +93,7 @@ class Solution:
 접두사를 이용해 단어 분기 처리를 해야한다는 것 까지는 알았지만 어떻게 해야할지 감을 잡지 못했는데, DFS로 가장 긴 단어를 찾고, 돌아오면서 자식 노드를 제거하는 식으로 구현할 수 있었다.
 
 ### 코드
+### Python
 ```python
 class TrieNode:
     def __init__(self):

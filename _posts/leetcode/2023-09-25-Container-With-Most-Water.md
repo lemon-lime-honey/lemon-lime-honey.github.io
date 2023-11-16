@@ -3,6 +3,7 @@ layout: post
 title:  Container With Most Water
 author: bs
 date: '2023-09-25 20:47:00 +0900'
+last_modified_at: '2023-11-16 13:21:00 +0900'
 category: leetcode
 tags: [leetcode, medium, 알고리즘]
 ---
@@ -25,6 +26,7 @@ Return *the maximum amount of water a container can store*.
 `height[lo]`가 `height[hi]`보다 작으면 `lo`에 1을 더하지만, 그렇지 않은 경우에는 `hi`에서 1을 뺀다.
 
 ## 코드
+### Python
 ```python
 class Solution:
     def maxArea(self, height: List[int]) -> int:
@@ -40,4 +42,27 @@ class Solution:
                 hi -= 1
 
         return result
+```
+
+### Java
+```java
+class Solution {
+    public int maxArea(int[] height) {
+        int lo = 0;
+        int hi = height.length - 1;
+        int water = 0;
+
+        while (lo < hi) {
+            water = Math.max(water, (hi - lo) * Math.min(height[lo], height[hi]));
+
+            if (height[lo] < height[hi]) {
+                lo++;
+            } else {
+                hi--;
+            }
+        }
+        
+        return water;
+    }
+}
 ```

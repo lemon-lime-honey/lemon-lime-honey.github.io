@@ -5,7 +5,7 @@ author: bs
 date: '2023-08-23 13:24:00 +0900'
 last_modified_at: '2023-10-17 17:04:00 +0900'
 category: leetcode
-tags: [leetcode, easy, 알고리즘, pre-ob-be_1-1]
+tags: [leetcode, easy, 알고리즘]
 ---
 
 # [LeetCode 169. Majority Element](https://leetcode.com/problems/majority-element/)

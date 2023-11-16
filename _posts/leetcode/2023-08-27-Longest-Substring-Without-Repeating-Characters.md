@@ -4,7 +4,7 @@ title:  Longest Substring Without Repeating Characters
 author: bs
 date: '2023-08-27 21:55:00 +0900'
 category: leetcode
-tags: [leetcode, medium, 알고리즘, pre-ob-be_1-2]
+tags: [leetcode, medium, 알고리즘]
 ---
 
 
@@ -13,7 +13,7 @@ tags: [leetcode, medium, 알고리즘, pre-ob-be_1-2]
 ## 원문
 Given a string `s`, find the length of the **longest substring** without repeating characters.
 
-## 내 생각
+## 풀이
 [Minimum Size Subarray Sum]({% link _posts/leetcode/2023-08-27-Longest-Substring-Without-Repeating-Characters.md %}) 문제를 참고했다.
 
 1. 문자를 저장하기 위한 큐 `letters`와 세트 `chk`, 길이를 저장하기 위한 변수 `result`를 선언한다.
@@ -28,6 +28,7 @@ Given a string `s`, find the length of the **longest substring** without repeati
 3. `result`를 반환한다.
 
 ## 코드
+### Python
 ```python
 from collections import deque
 

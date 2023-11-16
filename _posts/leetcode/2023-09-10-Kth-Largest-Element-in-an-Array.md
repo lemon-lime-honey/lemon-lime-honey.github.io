@@ -4,7 +4,7 @@ title:  Kth Largest Element in an Array
 author: bs
 date: '2023-09-10 20:00:00 +0900'
 category: leetcode
-tags: [leetcode, medium, 알고리즘, pre-ob-be_3-2]
+tags: [leetcode, medium, 알고리즘]
 ---
 
 # [LeetCode 215. Kth Largest Element in an Array](https://leetcode.com/problems/kth-largest-element-in-an-array/)
@@ -16,10 +16,11 @@ Note that it is the <code>k<sup>th</sup></code> largest element in the sorted or
 
 Can you solve it without sorting?
 
-## 내 생각
+## 풀이
 최대 힙에 배열 속 숫자를 넣는다. 그 다음 힙에서 최대값을 빼는 것을 반복해 `k`번째로 큰 수를 구한다.
 
 ## 코드
+### Python
 ```python
 import heapq
 

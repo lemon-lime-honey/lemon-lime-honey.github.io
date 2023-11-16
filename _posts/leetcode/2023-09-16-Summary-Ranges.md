@@ -36,6 +36,7 @@ Each range `[a,b]` in the list should be output as:
 5. 결과 배열을 반환한다.
 
 ## 코드
+### Python
 ```python
 class Solution:
     def summaryRanges(self, nums: List[int]) -> List[str]:
