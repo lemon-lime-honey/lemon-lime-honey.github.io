@@ -2,7 +2,7 @@
 layout: post
 title:  Permutations II
 author: bs
-date: '2023-11-23 12:46:00 +0900'
+date: '2023-11-22 12:46:00 +0900'
 category: leetcode
 tags: [leetcode, medium, 알고리즘]
 ---
