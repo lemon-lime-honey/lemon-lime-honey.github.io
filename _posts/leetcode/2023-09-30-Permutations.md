@@ -3,6 +3,7 @@ layout: post
 title:  Permutations
 author: bs
 date: '2023-09-30 20:47:00 +0900'
+last_modified_at: '2023-11-22 12:42:00 +0900'
 category: leetcode
 tags: [leetcode, medium, 알고리즘]
 ---
@@ -25,6 +26,7 @@ Given an array `nums` of distinct integers, return *all the possible permutation
     6. 숫자 집합에서 `nums[i]`를 제거한다.
 
 ## 코드
+### Python
 ```python
 class Solution:
     def permute(self, nums: List[int]) -> List[List[int]]:
@@ -48,4 +50,33 @@ class Solution:
         permutation()
 
         return result
+```
+
+### Java
+```java
+class Solution {
+    List<List<Integer>> result = new ArrayList<>();
+
+    private void backtrack(List<Integer> numbers, int[] nums, Set<Integer> used) {
+        if (numbers.size() == nums.length) {
+            result.add(new ArrayList<>(numbers));
+            return;
+        }
+        for (int num: nums) {
+            if (used.contains(num)) {
+                continue;
+            }
+            numbers.add(num);
+            used.add(num);
+            backtrack(numbers, nums, used);
+            used.remove(num);
+            numbers.remove(numbers.size() - 1);
+        }
+    }
+
+    public List<List<Integer>> permute(int[] nums) {
+        backtrack(new ArrayList<>(), nums, new HashSet<Integer>());
+        return result;
+    }
+}
 ```

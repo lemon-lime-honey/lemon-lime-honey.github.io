@@ -3,6 +3,7 @@ layout: post
 title:  Jump Game II
 author: bs
 date: '2023-09-19 19:32:00 +0900'
+last_modified_at: '2023-11-22 12:41:00 +0900'
 category: leetcode
 tags: [leetcode, medium, 알고리즘]
 ---
@@ -52,6 +53,7 @@ class Solution:
 122ms
 
 ### 코드
+#### Python
 ```python
 class Solution:
     def jump(self, nums: List[int]) -> int:
@@ -65,4 +67,25 @@ class Solution:
                 cnt += 1
 
         return cnt
+```
+
+#### Java
+```java
+class Solution {
+    public int jump(int[] nums) {
+        int result = 0;
+        int reach = 0;
+        int last = 0;
+
+        for (int i = 0; i < nums.length - 1; i++) {
+            reach = Math.max(reach, i + nums[i]);
+            if (i == last) {
+                last = reach;
+                result++;
+            }
+        }
+
+        return result;
+    }
+}
 ```
