@@ -3,6 +3,7 @@ layout: post
 title:  Find Median from Data Stream
 author: bs
 date: '2023-09-12 09:12:00 +0900'
+last_modified_at: '2023-11-24 12:51:00 +0900'
 category: leetcode
 tags: [leetcode, hard, 알고리즘]
 ---
@@ -67,4 +68,42 @@ class MedianFinder:
         if len(self.one) == len(self.two):
             return (self.one[0][1] + self.two[0][1]) / 2
         return self.one[0][1]
+```
+
+### Java
+```java
+class MedianFinder {
+    private PriorityQueue<Integer> left;
+    private PriorityQueue<Integer> right;
+
+    public MedianFinder() {
+        left = new PriorityQueue<>();
+        right = new PriorityQueue<>();
+    }
+
+    public void addNum(int num) {
+        if (left.size() != right.size()) {
+            left.add(-1 * num);
+        } else {
+            right.add(num);
+        }
+        if (!left.isEmpty() && right.peek() < -1 * left.peek()) {
+            int n1 = -1 * left.poll();
+            int n2 = right.poll();
+            left.add(-1 * n2);
+            right.add(n1);
+        }
+    }
+
+    public double findMedian() {
+        double result;
+
+        if (left.size() == right.size()) {
+            result = (-1 * left.peek() + (double)right.peek()) / 2;
+        } else {
+            result = right.peek();
+        }
+        return result;
+    }
+}
 ```
