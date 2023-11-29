@@ -3,6 +3,7 @@ layout: post
 title:  Group Anagrams
 author: bs
 date: '2023-08-31 21:26:00 +0900'
+'last_modified_at': 2023-11-19 15:16:00 +0900'
 category: leetcode
 tags: [leetcode, medium, 알고리즘]
 ---
@@ -49,7 +50,38 @@ class Solution:
         return result
 ```
 
-#### 더 빠른 방법은 없을까?
+### Java
+```java
+class Solution {
+    public List<List<String>> groupAnagrams(String[] strs) {
+        Map<String, List<String>> map = new HashMap<>();
+
+        for (String word: strs) {
+            char[] letters = word.toCharArray();
+            Arrays.sort(letters);
+            String sorted = new String(letters);
+
+            if (!map.containsKey(sorted)) {
+                List<String> temp = new ArrayList<>();
+                temp.add(word);
+                map.put(sorted, temp);
+            } else {
+                map.get(sorted).add(word);
+            }
+        }
+
+        List<List<String>> result = new ArrayList<>();
+
+        for (List<String> value: map.values()) {
+            result.add(value);
+        }
+
+        return result;
+    }
+}
+```
+
+### 더 빠른 방법은 없을까?
 위의 코드는 `3755ms/5.1%`가 나왔다. `5.1%`가 나왔으니 지나치게 느린게 맞다.
 
 [이 영상](https://www.youtube.com/watch?v=vzdNOK2oB2E)을 참고했다.
@@ -60,7 +92,7 @@ class Solution:
 단어 순회가 끝났으면 리스트를 튜플로 변환시킨 후 (파이썬에서는 딕셔너리의 키가 immutable한 객체여야 한다.) 딕셔너리에 단어를 추가한다. 튜플이 키이다.<br>
 `strs` 순회가 끝났으면 딕셔너리의 값만 모아 반환한다.
 
-##### 코드
+#### 코드
 ```python
 from collections import defaultdict
 

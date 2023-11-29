@@ -3,6 +3,7 @@ layout: post
 title:  Happy Number
 author: bs
 date: '2023-08-31 21:34:00 +0900'
+'last_modified_at': 2023-11-19 15:18:00 +0900'
 category: leetcode
 tags: [leetcode, easy, 알고리즘]
 ---
@@ -44,4 +45,30 @@ class Solution:
 
             n = res
             seen.add(n)
+```
+
+### Java
+```java
+class Solution {
+    public boolean isHappy(int n) {
+        Set<Integer> seen = new HashSet<>();
+
+        while (true) {
+            if (seen.contains(n)) {
+                return false;
+            }
+            if (n == 1) {
+                return true;
+            }
+            seen.add(n);
+            int temp = 0;
+
+            while (n != 0) {
+                temp += (n % 10) * (n % 10);
+                n /= 10;
+            }
+            n = temp;
+        }
+    }
+}
 ```

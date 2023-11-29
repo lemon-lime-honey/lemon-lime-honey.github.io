@@ -3,6 +3,7 @@ layout: post
 title:  Product of Array Except Self
 author: bs
 date: '2023-09-24 22:06:00 +0900'
+last_modified_at: '2023-11-29 15:20:00 +0900'
 category: leetcode
 tags: [leetcode, medium, 알고리즘]
 ---
@@ -51,6 +52,7 @@ class Solution:
 5. `result`를 반환한다.
 
 ### 코드
+#### Python
 ```python
 class Solution:
     def productExceptSelf(self, nums: List[int]) -> List[int]:
@@ -66,4 +68,27 @@ class Solution:
             before *= nums[i]
 
         return result
+```
+
+### Java
+```java
+class Solution {
+    public int[] productExceptSelf(int[] nums) {
+        int[] result = new int[nums.length];
+        result[0] = 1;
+
+        for (int i = 1; i < nums.length; i++) {
+            result[i] = result[i - 1] * nums[i - 1];
+        }
+
+        int before = 1;
+
+        for (int i = nums.length - 1; i >= 0; i--) {
+            result[i] *= before;
+            before *= nums[i];
+        }
+
+        return result;
+    }
+}
 ```

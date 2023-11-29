@@ -3,6 +3,7 @@ layout: post
 title:  Contains Duplicate II
 author: bs
 date: '2023-08-31 20:20:00 +0900'
+'last_modified_at': 2023-11-19 15:19:00 +0900'
 category: leetcode
 tags: [leetcode, easy, 알고리즘]
 ---
@@ -39,4 +40,31 @@ class Solution:
                     if i[j + 1] - i[j] <= k: return True
 
         return False
+```
+
+### Java
+```java
+class Solution {
+    public boolean containsNearbyDuplicate(int[] nums, int k) {
+        Map<Integer, List<Integer>> indices = new HashMap<>();
+
+        for (int i = 0; i < nums.length; i++) {
+            if (!indices.containsKey(nums[i])) {
+                List<Integer> temp = new ArrayList<>();
+                indices.put(nums[i], temp);
+            }
+            indices.get(nums[i]).add(i);
+        }
+
+        for (List<Integer> numbers: indices.values()) {
+            for (int i = 1; i < numbers.size(); i++) {
+                if (Math.abs(numbers.get(i - 1) - numbers.get(i)) <= k) {
+                    return true;
+                }
+            }
+        }
+
+        return false;
+    }
+}
 ```
