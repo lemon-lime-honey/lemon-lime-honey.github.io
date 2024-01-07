@@ -3,6 +3,7 @@ layout: post
 title:  Search in Rotated Sorted Array
 author: bs
 date: '2023-09-03 19:32:00 +0900'
+last_modified_at: '2024-01-07 17:51:00 +0900'
 category: leetcode
 tags: [leetcode, medium, 알고리즘]
 ---
@@ -79,6 +80,7 @@ class Solution:
     2. 그렇지 않으면:arrow_right:오른쪽을 확인해야 한다.
 
 ### 코드
+#### Python
 ```python
 class Solution:
     def search(self, nums: List[int], target: int) -> int:
@@ -102,4 +104,36 @@ class Solution:
                     lo = mid + 1
 
         return -1
+```
+
+#### Java
+```java
+class Solution {
+    public int search(int[] nums, int target) {
+        int lo = 0, hi = nums.length - 1;
+
+        while (lo <= hi) {
+            int mid = (lo + hi) / 2;
+            
+            if (nums[mid] == target) {
+                return mid;
+            }
+            if (nums[lo] <= nums[mid]) {
+                if (target > nums[mid] || target < nums[lo]) {
+                    lo = mid + 1;
+                } else {
+                    hi = mid - 1;
+                }
+            } else {
+                if (target < nums[mid] || target > nums[hi]) {
+                    hi = mid - 1;
+                } else {
+                    lo = mid + 1;
+                }
+            }
+        }
+
+        return -1;
+    }
+}
 ```
