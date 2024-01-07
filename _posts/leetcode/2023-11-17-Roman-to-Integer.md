@@ -5,6 +5,7 @@ author: bs
 date: '2023-11-17 10:22:00 +0900'
 category: leetcode
 tags: [leetcode, easy, 알고리즘]
+render_with_liquid: false
 ---
 
 # [LeetCode 13. Roman to Integer](https://leetcode.com/problems/roman-to-integer/)
