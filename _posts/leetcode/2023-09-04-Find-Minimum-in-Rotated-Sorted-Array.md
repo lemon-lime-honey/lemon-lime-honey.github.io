@@ -3,7 +3,7 @@ layout: post
 title:  Find Minimum in Rotated Sorted Array
 author: bs
 date: '2023-09-04 17:02:00 +0900'
-last_modified_at: '2023-09-04 17:10:00 +0900'
+last_modified_at: '2024-01-08 19:06:00 +0900'
 category: leetcode
 tags: [leetcode, medium, 알고리즘]
 ---
@@ -49,4 +49,31 @@ class Solution:
             else: return nums[mid]
 
         return nums[lo]
+```
+
+### Java
+```java
+class Solution {
+    public int findMin(int[] nums) {
+        int lo = 0;
+        int hi = nums.length - 1;
+        
+        while (lo < hi) {
+            int mid = (lo + hi) / 2;
+            if (nums[mid] > nums[lo] && nums[mid] > nums[hi]) {
+                lo = mid + 1;
+            } else if (nums[mid] < nums[lo] && nums[mid] < nums[hi]) {
+                hi = mid;
+            } else if (nums[mid] > nums[hi]) {
+                lo = mid + 1;
+            } else if (nums[mid] > nums[lo]) {
+                hi = mid;
+            } else {
+                return nums[mid];
+            }
+        }
+
+        return nums[lo];
+    }
+}
 ```

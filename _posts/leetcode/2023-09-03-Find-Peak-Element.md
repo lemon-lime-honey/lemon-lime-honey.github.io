@@ -3,6 +3,7 @@ layout: post
 title:  Find Peak Element
 author: bs
 date: '2023-09-03 14:16:00 +0900'
+last_modified_at: '2024-01-08 19:06:00 +0900'
 category: leetcode
 tags: [leetcode, medium, 알고리즘]
 ---
@@ -44,4 +45,24 @@ class Solution:
             else: hi = mid
 
         return lo
+```
+
+### Java
+```java
+class Solution {
+    public int findPeakElement(int[] nums) {
+        int lo = 0, hi = nums.length - 1;
+
+        while (lo < hi) {
+            int mid = (lo + hi) / 2;
+            if (nums[mid] < nums[mid + 1]) {
+                lo = mid + 1;
+            } else {
+                hi = mid;
+            }
+        }
+
+        return lo;
+    }
+}
 ```

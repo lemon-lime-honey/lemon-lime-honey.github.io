@@ -3,6 +3,7 @@ layout: post
 title:  Factorial Trailing Zeroes
 author: bs
 date: '2023-09-18 19:30:00 +0900'
+last_modified_at: '2024-01-08 19:08:00 +0900'
 category: leetcode
 tags: [leetcode, medium, 알고리즘]
 ---
@@ -48,6 +49,7 @@ class Solution:
 `n!`에 포함되어 있는 5의 수를 구하려면 `n`을 더이상 나누어 떨어지지 않을 때까지 5로 나누는데 이때 나오는 수를 다 더해주면 된다.
 
 ### 코드
+#### Python
 ```python
 class Solution:
     def trailingZeroes(self, n: int) -> int:
@@ -59,4 +61,23 @@ class Solution:
             n //= 5
 
         return result
+```
+
+#### Java
+```java
+class Solution {
+    public int trailingZeroes(int n) {
+        int result = 0;
+
+        while (n > 0) {
+            if (n < 5) {
+                break;
+            }
+            result += n / 5;
+            n /= 5;
+        }
+
+        return result;
+    }
+}
 ```
