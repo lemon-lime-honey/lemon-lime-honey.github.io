@@ -3,12 +3,14 @@ layout: post
 title:  진공 중의 정전계
 author: bs
 date: '2024-01-10 23:04:00 +0900'
+last_modified_at: '2024-01-10 23:33:00 +0900'
 category: [EEE, Electromagnetics]
 tags: [전자기학]
 math: true
 ---
 
 # 쿨롱 법칙
+
 $
 F=\dfrac{Q_{1}Q_{2}}{4\pi \varepsilon _{0}r^{2}}=9\times 10^{9}\times \dfrac{Q_{1}Q_{2}}{r^{2}} [\textsf{N}]
 $
@@ -35,12 +37,14 @@ $Q$: 전하량$[\textsf{C}]$, $r$: 거리$[\textsf{m}]$, $\varepsilon_{0}$(진�
 8. 전기력선은 등전위면과 수직으로 교차한다.
 
 # 전기력선 방정식
+
 $\dfrac{dx}{E_{x}}=\dfrac{dy}{E_{y}}=\dfrac{dz}{E_{z}}$
 
 1. $V=x^{2}+y^{2}$ (전기력선 방정식: $y=Ax$ 형태)
 2. $V=x^{2}-y^{2}$ (전기력선 방정식: $xy = A 형태$)
 
 # 전계의 세기 구하는 방법: 가우스 법칙
+
 $\oint E\cdot ds=\dfrac{Q}{\varepsilon _{0}}\cdot E=\dfrac{Q}{\varepsilon _{0}S}=\dfrac{\sigma }{\varepsilon _{0}}$
 
 1. 구도체(점전하)
@@ -67,12 +71,13 @@ $\oint E\cdot ds=\dfrac{Q}{\varepsilon _{0}}\cdot E=\dfrac{Q}{\varepsilon _{0}S}
     (미소전하 $\pm Q[\textsf{C}]$, 미소거리 $\delta$)
 2. 전기쌍극자의 전위<br>
     $V=\dfrac{M}{4\pi \varepsilon _{0}r^{2}}\cos \theta $<br>
-    ($\theta = 0\degree$(최대), $90\degree$(최소))
+    ($\theta = 0^\circ$(최대), $90^\circ$(최소))
 3. 전기쌍극자의 전계 세기<br>
     $E=\dfrac{M}{4\pi \varepsilon _{0}r^{3}}\sqrt{1+3\cos ^{2}\theta }$<br>
-    ($\theta = 0\degree$(최대), $90\degree$(최소))
+    ($\theta = 0^\circ$(최대), $90^\circ$(최소))
 
 # 정전응력(면적당 힘)
+
 $f=\dfrac{\sigma ^{2}}{2\varepsilon _{0}}=\dfrac{1}{2}\varepsilon _{0}E^{2}=\dfrac{D^{2}}{2\varepsilon _{0}} [\textsf{J/m}^3], [\textsf{N/m}^2]$
 
 # 전기이중층
