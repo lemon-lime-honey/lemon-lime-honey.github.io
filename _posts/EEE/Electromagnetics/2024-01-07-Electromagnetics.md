@@ -9,5 +9,5 @@ tags: [전자기학]
 ---
 
 - [벡터의 해석]({% link _posts/EEE/Electromagnetics/2024-01-07-Vector.md %})
-- [진공 중의 정전계]({% link _posts/EEE/Electromagnetics/2024-01-10-Electrostatic-Field.md})
-- [진공 중의 도체계]({% link _posts/EEE/Electromagnetics/2024-01-10-Conductors.md})
+- [진공 중의 정전계]({% link _posts/EEE/Electromagnetics/2024-01-10-Electrostatic-Field.md %})
+- [진공 중의 도체계]({% link _posts/EEE/Electromagnetics/2024-01-10-Conductors.md %})
