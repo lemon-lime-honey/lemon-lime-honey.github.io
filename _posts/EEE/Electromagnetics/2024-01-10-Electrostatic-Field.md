@@ -11,7 +11,7 @@ math: true
 
 # 쿨롱 법칙
 
-$F=\dfrac{Q_{1}Q_{2}}{4\pi \varepsilon _{0}r^{2}}=9\times 10^{9}\times \dfrac{Q_{1}Q_{2}}{r^{2}} [\textsf{N}]$
+$F=\dfrac{Q_{1}Q_{2}}{4\pi \varepsilon_{0}r^{2}}=9\times 10^{9}\times \dfrac{Q_{1}Q_{2}}{r^{2}} [\textsf{N}]$
 
 $Q$: 전하량$[\textsf{C}]$, $r$: 거리$[\textsf{m}]$, $\varepsilon_{0}$(진공에서의 유전율)$= 8.855\times 10^{-12} \textsf{F/m}$
 
