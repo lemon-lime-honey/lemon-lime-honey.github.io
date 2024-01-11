@@ -10,7 +10,7 @@ math: true
 
 # 교류의 표시
 1. 순시값: $i(t)=I_{m}\sin{\left(\omega t+\theta\right)}[\textsf{A}]$
-2. 평균값: $I_{av}=\dfrac{1}{T}\int^{T}_{0} |i(t)|\,dt\ =\dfrac{1}{\dfrac{T}{2}}\int^{\frac{T}{2}}_{0} i(t)\,dt\ $
+2. 평균값: {::nomarkdown}$I_{av}=\dfrac{1}{T}\int^{T}_{0}\mid i(t) \mid\,dt =\dfrac{1}{\dfrac{T}{2}}\int^{\frac{T}{2}}_{0} i(t)\,dt\ ${:/}
 3. 실효값: $I=\sqrt{\dfrac{1}{T}\int^{T}_{0} i^{2} \,dt} = \sqrt{(\text{1주기 동안의 }i^{2}\text{의 평균})^{2}}$
 
 # 교류의 페이저 표시
