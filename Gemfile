@@ -24,3 +24,5 @@ gem "http_parser.rb", "~> 0.6.0", :platforms => [:jruby]
 
 # for emoji
 gem "jemoji"
+
+gem "kramdown-math-katex"
