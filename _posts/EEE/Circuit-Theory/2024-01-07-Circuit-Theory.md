@@ -17,4 +17,4 @@ tags: [회로이론]
 - [선형회로망]({% link _posts/EEE/Circuit-Theory/2024-01-12-Linear-Circuit.md %})
 - [대칭 3상 교류]({% link _posts/EEE/Circuit-Theory/2024-01-12-Balanced-Three-Phase-AC-Power.md %})
 - [대칭좌표법]({% link _posts/EEE/Circuit-Theory/2024-01-13-Symmetrical-Components.md %})
-- [비정현파 교류]({% link _posts/EEE/Circuit-Theory/2024-01-12-Non-Sinusoidal-AC.md %})
+- [비정현파 교류]({% link _posts/EEE/Circuit-Theory/2024-01-13-Non-Sinusoidal-AC.md %})
