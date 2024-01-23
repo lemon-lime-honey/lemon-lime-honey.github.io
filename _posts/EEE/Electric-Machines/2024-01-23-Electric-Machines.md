@@ -7,8 +7,8 @@ category: [EEE, Electric Machines]
 tags: [전기기기]
 ---
 
-- [직류기](% link _posts/EEE/Electric-Machines/2024-01-23-DC-Machine.md %)
-- [동기기](% link _posts/EEE/Electric-Machines/2024-01-23-Synchronous-Machine.md %)
-- [변압기](% link _posts/EEE/Electric-Machines/2024-01-23-Transformer.md %)
+- [직류기]({% link _posts/EEE/Electric-Machines/2024-01-23-DC-Machine.md %})
+- [동기기]({% link _posts/EEE/Electric-Machines/2024-01-23-Synchronous-Machine.md %})
+- [변압기]({% link _posts/EEE/Electric-Machines/2024-01-23-Transformer.md %})
 - 유도기
 - 정류기
