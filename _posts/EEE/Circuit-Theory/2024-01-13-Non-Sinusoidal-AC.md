@@ -3,8 +3,8 @@ layout: post
 title:  비정현파 교류
 author: bs
 date: '2024-01-13 19:40:00 +0900'
-category: [EEE, Electromagnetics]
-tags: [전자기학]
+category: [EEE, Circuit Theory]
+tags: [회로이론]
 math: true
 ---
 
