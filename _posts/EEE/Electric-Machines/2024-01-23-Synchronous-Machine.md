@@ -49,7 +49,7 @@ mermaid: true
     1. 감자작용: $L$부하, 지상전류, 전기자전류가 유기기전력보다 위상이 $\dfrac{\pi}{2}$ 뒤질 때
     2. 증자작용: $C$부하, 진상전류, 전기자전류가 유기기전력보다 위상이 $\dfrac{\pi}{2}$ 앞설 때
 
-<div class="mermaid" markdown="0">
+```mermaid
     %%{init: {"quadrantChart": {"chartWidth": 400, "chartHeight": 400} }}%%
     quadrantChart
         x-axis "V(전동기)" --> "E(발전기)"
@@ -58,7 +58,7 @@ mermaid: true
         quadrant-2 "증자"
         quadrant-3 "감자"
         quadrant-4 "감자"
-</div>
+```
 
 # 동기 발전기의 출력
 1. 비돌극형<br>
