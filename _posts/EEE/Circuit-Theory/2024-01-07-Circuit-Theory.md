@@ -3,7 +3,7 @@ layout: post
 title:  Circuit Theory
 author: bs
 date: '2024-01-07 16:00:00 +0900'
-last_modified_at: '2024-01-13 19:41:00 +0900'
+last_modified_at: '2024-01-24 16:03:00 +0900'
 category: [EEE, Circuit Theory]
 tags: [회로이론]
 ---
@@ -18,3 +18,7 @@ tags: [회로이론]
 - [대칭 3상 교류]({% link _posts/EEE/Circuit-Theory/2024-01-12-Balanced-Three-Phase-AC-Power.md %})
 - [대칭좌표법]({% link _posts/EEE/Circuit-Theory/2024-01-13-Symmetrical-Components.md %})
 - [비정현파 교류]({% link _posts/EEE/Circuit-Theory/2024-01-13-Non-Sinusoidal-AC.md %})
+- [2단자망]({% link _posts/EEE/Circuit-Theory/2024-01-24-Two-Port.md %})
+- [4단자망]({% link _posts/EEE/Circuit-Theory/2024-01-24-Four-Port.md %})
+- [분포정수회로]({% link _posts/EEE/Circuit-Theory/2024-01-24-Distributed-Constant-Circuit.md %})
+- [과도현상]({% link _posts/EEE/Circuit-Theory/2024-01-24-Transient.md %})
