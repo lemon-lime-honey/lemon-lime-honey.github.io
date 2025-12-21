@@ -10,6 +10,7 @@ export default defineConfig({
   integrations: [svelte()],
 
   vite: {
-    plugins: [tailwindcss()]
-  }
+    plugins: [tailwindcss()],
+  },
+  site: 'https://lemon-lime-honey.github.io',
 });
