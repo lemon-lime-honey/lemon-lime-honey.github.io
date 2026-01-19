@@ -1,0 +1,78 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { getCollection } from 'astro:content';
+
+// Get all blog posts sorted by date
+const allPosts = await getCollection('blog');
+const posts = allPosts
+  .map((post) => ({
+    title: post.data.title,
+    slug: post.slug,
+    date: post.data.date,
+    tags: post.data.tags,
+    featured: post.data.featured,
+  }))
+  .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+
+const formatDate = (date: Date) => {
+  return new Date(date).toLocaleDateString('en-US', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+  });
+};
+---
+
+<Layout title="Blog | C A N D Y">
+  <div class="pt-32 pb-20 px-6">
+    <div class="max-w-5xl mx-auto">
+      <!-- Header -->
+      <section class="mb-16">
+        <h1 class="text-5xl md:text-7xl font-display font-bold mb-6">Blog</h1>
+      </section>
+
+      <!-- Posts Table -->
+      <section>
+        <div class="bg-card border border-border rounded-xl overflow-hidden">
+          <div class="divide-y divide-border">
+            {
+              posts.map((post) => (
+                <a href={`/blog/${post.slug}`} class="block hover:bg-border/50 transition-colors duration-200">
+                  <div class="p-6 md:p-8 flex flex-col md:flex-row md:items-center gap-4 md:gap-8">
+                    <time class="text-sm text-muted md:w-48 flex-shrink-0" datetime={post.date.toISOString()}>
+                      {formatDate(post.date)}
+                    </time>
+                    <div class="flex-1 min-w-0">
+                      <h2 class="text-xl font-semibold mb-2 group-hover:text-primary transition-colors duration-200">
+                        {post.title}
+                      </h2>
+                      {post.tags.length > 0 && (
+                        <div class="flex flex-wrap gap-2">
+                          {post.tags.map((tag) => (
+                            <span class="text-xs px-2 py-1 rounded bg-border text-muted">{tag}</span>
+                          ))}
+                        </div>
+                      )}
+                    </div>
+                    {post.featured && (
+                      <span class="flex-shrink-0 px-3 py-1 text-xs font-medium rounded-full bg-primary text-dark">
+                        Featured
+                      </span>
+                    )}
+                    <svg
+                      class="w-5 h-5 text-muted flex-shrink-0 md:ml-auto"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                    </svg>
+                  </div>
+                </a>
+              ))
+            }
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+</Layout>

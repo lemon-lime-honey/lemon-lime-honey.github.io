@@ -1,1 +1,70 @@
 @import "tailwindcss";
+
+@font-face {
+  font-family: 'Interop';
+  font-weight: 600;
+  src: url('/fonts/Interop-SemiBold.woff2') format('woff2');
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'SUIT Variable';
+  font-weight: 100 900;
+  src: url('/fonts/SUIT-Variable.woff2') format('woff2-variations');
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'goorm-sans-code';
+  font-weight: 400;
+  src: url('/fonts/goorm-sans-code.woff2') format('woff2');
+  font-display: swap;
+}
+
+@theme {
+  --color-primary: #0066cc;
+  --color-light: #faf7f2;
+  --color-dark: #1a1a1a;
+  --color-muted: #666;
+  --color-card: #ffffff;
+  --color-border: #e0e0e0;
+  --color-off-white: #f5f5f5;
+
+  --font-display: "Interop", system-ui, sans-serif;
+  --font-body: "SUIT Variable", system-ui, sans-serif;
+  --font-mono: "goorm-sans-code", monospace;
+
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-feature-settings: "cv11", "ss01";
+}
+
+pre,
+code {
+  font-family: var(--font-mono);
+}
+
+pre {
+  background-color: #f5f5f5;
+  border-radius: 8px;
+  padding: 1rem;
+  overflow-x: auto;
+}
+
+code {
+  background-color: rgba(0, 0, 0, 0.05);
+  padding: 0.2em 0.4em;
+  border-radius: 4px;
+}
+
+pre code {
+  background-color: transparent;
+  padding: 0;
+}
