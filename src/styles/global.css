@@ -68,3 +68,56 @@ pre code {
   background-color: transparent;
   padding: 0;
 }
+
+.prose .prose-lg {
+  line-height: 1.75;
+
+  /* 본문 내 태그들만 타겟팅 */
+  & h1 {
+    @apply text-4xl font-extrabold mt-12 mb-6;
+  }
+
+  & h2 {
+    @apply text-3xl font-bold mt-10 mb-4 border-b pb-2;
+  }
+
+  & h3 {
+    @apply text-2xl font-semibold mt-8 mb-4;
+  }
+
+  & p {
+    @apply mb-5 text-gray-800 dark:text-gray-200;
+  }
+
+  & ul {
+    @apply list-disc pl-6 mb-5;
+  }
+
+  & ol {
+    @apply list-decimal pl-6 mb-5;
+  }
+
+  & li {
+    @apply mb-2;
+  }
+
+  & a {
+    @apply text-blue-600 underline hover:text-blue-800;
+  }
+
+  & blockquote {
+    @apply border-l-4 border-gray-300 pl-4 italic my-6 text-gray-600;
+  }
+
+  & code {
+    @apply bg-gray-100 dark:bg-gray-800 px-1.5 py-0.5 rounded font-mono text-sm;
+  }
+
+  & pre {
+    @apply bg-gray-900 text-white p-4 rounded-lg my-6 overflow-x-auto;
+  }
+
+  & img {
+    @apply max-w-full h-auto rounded-lg my-8;
+  }
+}

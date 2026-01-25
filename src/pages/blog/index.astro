@@ -8,11 +8,12 @@ const posts = allPosts
   .map((post) => ({
     title: post.data.title,
     slug: post.slug,
-    date: post.data.date,
+    pubDate: post.data.pubDate,
+    updatedDate: post.data.updatedDate,
     tags: post.data.tags,
     featured: post.data.featured,
   }))
-  .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+  .sort((a, b) => new Date(b.pubDate).getTime() - new Date(a.pubDate).getTime());
 
 const formatDate = (date: Date) => {
   return new Date(date).toLocaleDateString('en-US', {
@@ -39,8 +40,8 @@ const formatDate = (date: Date) => {
               posts.map((post) => (
                 <a href={`/blog/${post.slug}`} class="block hover:bg-border/50 transition-colors duration-200">
                   <div class="p-6 md:p-8 flex flex-col md:flex-row md:items-center gap-4 md:gap-8">
-                    <time class="text-sm text-muted md:w-48 flex-shrink-0" datetime={post.date.toISOString()}>
-                      {formatDate(post.date)}
+                    <time class="text-sm text-muted md:w-48 flex-shrink-0" datetime={post.pubDate.toISOString()}>
+                      {formatDate(post.pubDate)}
                     </time>
                     <div class="flex-1 min-w-0">
                       <h2 class="text-xl font-semibold mb-2 group-hover:text-primary transition-colors duration-200">

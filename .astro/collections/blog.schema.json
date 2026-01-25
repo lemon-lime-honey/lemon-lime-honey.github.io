@@ -7,7 +7,23 @@
         "title": {
           "type": "string"
         },
-        "date": {
+        "pubDate": {
+          "anyOf": [
+            {
+              "type": "string",
+              "format": "date-time"
+            },
+            {
+              "type": "string",
+              "format": "date"
+            },
+            {
+              "type": "integer",
+              "format": "unix-time"
+            }
+          ]
+        },
+        "updatedDate": {
           "anyOf": [
             {
               "type": "string",
@@ -43,7 +59,7 @@
       },
       "required": [
         "title",
-        "date"
+        "pubDate"
       ],
       "additionalProperties": false
     }
