@@ -1,0 +1,103 @@
+---
+title: 'SQLite DB 기반으로 COCO annotation 서브셋 추출하기'
+pubDate: 2026-01-25T19:40:40.000+0900
+tags: ['computer-vision', 'dataset', 'coco', 'sqlite', 'data-engineering']
+excerpt: 'SQLite 기반으로 patch 단위 COCO JSON 생성'
+---
+
+COCO 형식의 대용량 annotation JSON을 다루다 보면 특정 디렉토리에 있는 이미지에 해당하는 라벨만 추출하거나 특정 클래스의 라벨만 추출해야 할 수 있다.
+
+Objects365처럼 용량이 매우 큰 경우:
+
+- JSON 전체 로딩/파싱 비용이 큼
+- 단순 스크립트로는 메모리 사용량이 커짐
+- 반복적인 필터링 작업이 번거로움
+
+이런 이유로 [annotation 데이터를 SQLite DB로 변환](/coco-to-sqlite3)해 두고, 필요할 때 DB 쿼리 기반으로 서브셋을 추출하는 방식으로 작업했다.
+
+이번 글에서는:
+
+- 특정 이미지 폴더 기준으로 이미지 + annotation 필터링
+- 필요 시 특정 category만 추가 필터링
+- 대용량 처리를 위한 chunk 단위 쿼리
+
+를 한 번에 처리하는 스크립트를 정리한다.
+
+## 사용 사례
+
+주 사용 목적은 다음과 같다.
+
+- 특정 폴더에 복사된 이미지들을 기준으로 COCO JSON 생성
+- patch 단위로 JSON을 나눠 관리 (patch_0, patch_1, ...)
+- 필요 시 category name 또는 id 기준으로 클래스 필터링
+
+예시:
+
+- Objects365 데이터셋에서 특정 이미지 세트만 추출
+- 클래스 일부만 포함한 경량 서브셋 생성
+- 학습용 train/val split 별 JSON 생성
+
+## 전체 흐름
+
+스크립트의 전체 동작 흐름은 다음과 같다.
+
+1. SQLite DB에서 category 테이블 로드
+2. category name → id 매핑 (선택)
+3. images 테이블에서 이미지 폴더 기준으로 필터링
+4. annotations 테이블에서 image_id 기준으로 chunk 단위 조회
+5. (선택) category_id 기준 추가 필터링
+6. COCO 형식 JSON으로 재구성 후 저장
+
+## 이미지 기준 필터링
+
+먼저 대상 이미지 폴더에 실제로 존재하는 파일명을 기준으로 DB의 images 테이블에서 해당 이미지들만 선별한다.
+
+이런 방식으로 JSON 전체를 순회하는 대신 DB 쿼리 + 파일명 매칭으로 빠르게 필터링한다.
+
+https://github.com/lemon-lime-honey/utils/blob/47213769814f0ba32224857b672474545f138bf4/extract-subset-from-sqlite.py#L16-L53
+
+## 대용량 annotations chunk 처리
+
+SQLite에는 한 SQL 문장에서 바인딩할 수 있는 변수 개수 제한(`SQLITE_MAX_VARIABLE_NUMBER`)이 있으며, 동시에 SQL 문장 자체의 길이에도 제한(`SQLITE_MAX_SQL_LENGTH`)이 존재한다. `IN (...)` 절에 수천 개 이상의 ID가 포함될 경우 변수 개수 제한 또는 SQL 텍스트 길이 제한 중 하나에 걸려 쿼리가 실패할 수 있다. 이를 피하기 위해 `image_id` 목록을 chunk 단위로 나누어 여러 번 조회하도록 구현하였다.
+
+https://github.com/lemon-lime-honey/utils/blob/47213769814f0ba32224857b672474545f138bf4/extract-subset-from-sqlite.py#L56-L80
+
+또한 다음과 같은 효과가 있다:
+
+- 대용량 이미지 세트에서도 안정적으로 처리
+- 메모리 사용량 제어
+
+## category 기준 추가 필터링
+
+필요한 경우 category name 또는 category id 기준으로 annotation을 추가로 필터링할 수 있다.
+
+- `target_category_names`
+- `target_category_ids`
+
+중 하나를 넘기면 내부적으로 category_id 기준으로 변환하여 쿼리에 반영된다.
+
+https://github.com/lemon-lime-honey/utils/blob/47213769814f0ba32224857b672474545f138bf4/extract-subset-from-sqlite.py#L8-L13
+
+## COCO JSON 생성
+
+최종적으로 다음 항목들을 모아 COCO JSON을 생성한다.
+
+- images
+- annotations
+- categories
+
+필요한 category만 남기도록 정리한 다음 patch 단위로 JSON 파일을 생성한다.
+
+https://github.com/lemon-lime-honey/utils/blob/47213769814f0ba32224857b672474545f138bf4/extract-subset-from-sqlite.py#L111-L118
+
+https://github.com/lemon-lime-honey/utils/blob/47213769814f0ba32224857b672474545f138bf4/extract-subset-from-sqlite.py#L121-L129
+
+## 정리
+
+COCO 형식의 대용량 annotation JSON을 그대로 다루는 대신 SQLite DB로 변환해 두고 쿼리 기반으로 서브셋을 추출하면:
+
+- 속도
+- 메모리 사용량
+- 반복 작업 자동화
+
+측면에서 훨씬 효율성이 개선된다.
