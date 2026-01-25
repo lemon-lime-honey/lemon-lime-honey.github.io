@@ -49,30 +49,12 @@ body {
 pre,
 code {
   font-family: var(--font-mono);
-}
-
-pre {
-  background-color: #f5f5f5;
-  border-radius: 8px;
-  padding: 1rem;
-  overflow-x: auto;
-}
-
-code {
-  background-color: rgba(0, 0, 0, 0.05);
-  padding: 0.2em 0.4em;
-  border-radius: 4px;
-}
-
-pre code {
-  background-color: transparent;
-  padding: 0;
+  font-size: small;
 }
 
 .prose .prose-lg {
   line-height: 1.75;
 
-  /* 본문 내 태그들만 타겟팅 */
   & h1 {
     @apply text-4xl font-extrabold mt-12 mb-6;
   }
@@ -102,19 +84,11 @@ pre code {
   }
 
   & a {
-    @apply text-blue-600 underline hover:text-blue-800;
+    /* @apply text-blue-600 underline hover:text-blue-800; */
   }
 
   & blockquote {
     @apply border-l-4 border-gray-300 pl-4 italic my-6 text-gray-600;
-  }
-
-  & code {
-    @apply bg-gray-100 dark:bg-gray-800 px-1.5 py-0.5 rounded font-mono text-sm;
-  }
-
-  & pre {
-    @apply bg-gray-900 text-white p-4 rounded-lg my-6 overflow-x-auto;
   }
 
   & img {

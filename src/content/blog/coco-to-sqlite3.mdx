@@ -5,6 +5,8 @@ tags: ['computer-vision', 'dataset', 'coco', 'sqlite', 'data-engineering']
 excerpt: '대용량 COCO annotation JSON 파일을 SQLite DB로 변환한 과정'
 ---
 
+import GithubCode from '../../pages/blog/GithubCode.astro';
+
 [소스코드](https://github.com/lemon-lime-honey/utils/blob/main/coco-to-sqlite-convert.py)
 
 ## 배경
@@ -42,7 +44,7 @@ COCO 형식의 annotation JSON 파일은 규모가 작은 경우 필요할 때�
 2. images 스트리밍 파싱 및 INSERT
 3. annotations 스트리밍 파싱 및 batch INSERT
 
-https://github.com/lemon-lime-honey/utils/blob/2dd155c2d89aa8fd7466e69711860c47fd411b04/coco-to-sqlite-convert.py#L208-L228
+<GithubCode url="https://github.com/lemon-lime-honey/utils/blob/2dd155c2d89aa8fd7466e69711860c47fd411b04/coco-to-sqlite-convert.py#L208-L228" />
 
 ## Batch INSERT 및 Decimal 처리 이슈
 
@@ -53,9 +55,9 @@ annotations 항목은 전체 데이터셋 기준으로 수천만 건에 이를 �
 - `Decimal` → `float` / `int` 로 명시적 변환
 - batch INSERT 이전에 타입 정규화 수행
 
-https://github.com/lemon-lime-honey/utils/blob/2dd155c2d89aa8fd7466e69711860c47fd411b04/coco-to-sqlite-convert.py#L194-L205
+<GithubCode url="https://github.com/lemon-lime-honey/utils/blob/2dd155c2d89aa8fd7466e69711860c47fd411b04/coco-to-sqlite-convert.py#L194-L205" />
 
-https://github.com/lemon-lime-honey/utils/blob/2dd155c2d89aa8fd7466e69711860c47fd411b04/coco-to-sqlite-convert.py#L134-L167
+<GithubCode url="https://github.com/lemon-lime-honey/utils/blob/2dd155c2d89aa8fd7466e69711860c47fd411b04/coco-to-sqlite-convert.py#L134-L167" />
 
 이를 통해:
 
@@ -80,7 +82,7 @@ annotation 테이블은 이후 다음과 같은 쿼리에 반복적으로 사용
 
 대량 INSERT시 인덱스 유지 비용으로 인해 적재 성능이 저하되는 것을 방지하기 위하여 모든 데이터의 적재가 완료된 후 인덱스를 생성하도록 구성하였다.
 
-https://github.com/lemon-lime-honey/utils/blob/2dd155c2d89aa8fd7466e69711860c47fd411b04/coco-to-sqlite-convert.py#L182-L191
+<GithubCode url="https://github.com/lemon-lime-honey/utils/blob/2dd155c2d89aa8fd7466e69711860c47fd411b04/coco-to-sqlite-convert.py#L182-L191" />
 
 ## 결과
 
