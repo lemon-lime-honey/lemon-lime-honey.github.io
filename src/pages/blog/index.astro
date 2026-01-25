@@ -40,7 +40,7 @@ const formatDate = (date: Date) => {
               posts.map((post) => (
                 <a href={`/blog/${post.slug}`} class="block hover:bg-border/50 transition-colors duration-200">
                   <div class="p-6 md:p-8 flex flex-col md:flex-row md:items-center gap-4 md:gap-8">
-                    <time class="text-sm text-muted md:w-48 flex-shrink-0" datetime={post.pubDate.toISOString()}>
+                    <time class="text-sm text-muted md:w-48 flex-shrink-0" datetime={post.pubDate}>
                       {formatDate(post.pubDate)}
                     </time>
                     <div class="flex-1 min-w-0">

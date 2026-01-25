@@ -22,7 +22,7 @@ const posts = await getCollection('blog');
             <BlogCard
               title={post.data.title}
               slug={post.slug}
-              date={post.data.pubDate.toISOString().split('T')[0]}
+              date={post.data.pubDate.split('T')[0]}
               excerpt={post.data.excerpt || ''}
               tags={post.data.tags}
             />

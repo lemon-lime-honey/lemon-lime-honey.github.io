@@ -15,7 +15,7 @@ const { Content } = await post.render();
 
 // Format date
 const formatDate = (date: Date) => {
-  return date.toLocaleDateString('en-US', {
+  return date.toLocaleString('ko-KR', {
     year: 'numeric',
     month: 'long',
     day: 'numeric',
@@ -32,7 +32,7 @@ const calculateReadingTime = (content: string) => {
 
 // Get all posts for navigation
 const allPosts = await getCollection('blog');
-const sortedPosts = allPosts.sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime());
+const sortedPosts = allPosts.sort((a, b) => new Date(b.data.pubDate).getTime() - new Date(a.data.pubDate).getTime());
 
 const currentIndex = sortedPosts.findIndex((p) => p.slug === post.slug);
 const prevPost = currentIndex < sortedPosts.length - 1 ? sortedPosts[currentIndex + 1] : null;
@@ -60,8 +60,8 @@ const nextPost = currentIndex > 0 ? sortedPosts[currentIndex - 1] : null;
 
         <!-- Meta -->
         <div class="flex flex-wrap items-center gap-4 text-muted text-sm">
-          <time datetime={post.data.pubDate.toISOString()}>
-            {formatDate(post.data.pubDate)}
+          <time datetime={post.data.pubDate}>
+            {formatDate(post.data.pubDate.split('T')[0])}
           </time>
           <span>•</span>
           <span>{calculateReadingTime(post.body)}</span>
