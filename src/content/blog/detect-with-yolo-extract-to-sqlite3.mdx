@@ -1,0 +1,32 @@
+---
+title: 'YOLO 객체 검출 데이터 SQLite 저장'
+pubDate: 2026-02-09T23:20:40.000+0900
+tags: ['computer-vision', 'yolo', 'sqlite', 'python', 'data-management']
+excerpt: 'YOLO 검출 결과의 SQLite DB 변환 및 ROI 필터링 과정'
+---
+
+import GithubCode from '../../components/GithubCode.astro';
+
+[소스코드](https://github.com/lemon-lime-honey/utils/blob/main/yolo-detection-from-videos-to-sqlite.py)
+
+내가 생각하는 YOLO의 단점 중 하나는 그거다. 결과를 txt로 하나하나 저장한다는 것. 그래서 파일의 양도 많아질 뿐만 아니라 파일을 열었을 때 클래스 또한 인덱스 번호로 저장되어 있어 그렇게 직관적이지 않게 느껴진다.
+
+업무 중 복수의 영상 속 객체를 검출해야 했던 일이 있었다. 폴더에 영상을 전부 넣어놓고 YOLO로 영상 속 타겟 클래스를 검출한 다음 FFmpeg를 이용해 영상에 Bounding Box를 그렸던 작업인데, 이번에는 업무 중 사용했던 스크립트를 조금 더 응용해서 SQLite3에 저장하는 것까지 다룰 것이다.
+
+1. DB 스키마
+
+데이터 중복을 피하기 위해 영상 정보(`videos`)와 검출 결과(`detections`) 테이블을 분리한다. `video_id`에는 인덱스를 생성하여 이후 특정 영상의 데이터만 빠르게 추출할 수 있도록 했다.
+
+<GithubCode url="https://github.com/lemon-lime-honey/utils/blob/66cb822a0e120227e6e0d5e73029dc3e3bde5cbc/yolo-detection-from-videos-to-sqlite.py#L17-L33" />
+
+2. ROI 필터링 및 데이터 추출
+
+모든 객체를 다 저장하지 않고, 박스 중심점(cx, cy)이 미리 설정한 ROI 범위 안에 들어올 때만 기록한다.
+
+<GithubCode url="https://github.com/lemon-lime-honey/utils/blob/66cb822a0e120227e6e0d5e73029dc3e3bde5cbc/yolo-detection-from-videos-to-sqlite.py#L65-L79" />
+
+3. 배치 처리
+
+프레임마다 DB에 커밋하면 I/O 병목으로 느려진다. 따라서 데이터 insert는 매 프레임마다 하되 commit은 영상 단위로 처리했다.
+
+<GithubCode url="https://github.com/lemon-lime-honey/utils/blob/66cb822a0e120227e6e0d5e73029dc3e3bde5cbc/yolo-detection-from-videos-to-sqlite.py#L81-L90" />
