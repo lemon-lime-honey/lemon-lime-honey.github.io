@@ -7,7 +7,7 @@ const allPosts = await getCollection('blog');
 const posts = allPosts
   .map((post) => ({
     title: post.data.title,
-    slug: post.slug,
+    slug: post.id,
     pubDate: post.data.pubDate,
     updatedDate: post.data.updatedDate,
     tags: post.data.tags,
@@ -29,39 +29,39 @@ const formatDate = (date: Date) => {
     <div class="max-w-5xl mx-auto">
       <!-- Header -->
       <section class="mb-16">
-        <h1 class="text-5xl md:text-7xl font-display font-bold mb-6">Blog</h1>
+        <h1 class="text-5xl md:text-7xl font-display font-bold mb-6 text-base-content">Blog</h1>
       </section>
 
       <!-- Posts Table -->
       <section>
-        <div class="bg-card border border-border rounded-xl overflow-hidden">
-          <div class="divide-y divide-border">
+        <div class="bg-base-100 border border-base-300 rounded-xl overflow-hidden">
+          <div class="divide-y divide-base-300">
             {
               posts.map((post) => (
-                <a href={`/blog/${post.slug}`} class="block hover:bg-border/50 transition-colors duration-200">
+                <a href={`/blog/${post.slug}`} class="block hover:bg-base-200/50 transition-colors duration-200">
                   <div class="p-6 md:p-8 flex flex-col md:flex-row md:items-center gap-4 md:gap-8">
-                    <time class="text-sm text-muted md:w-48 flex-shrink-0" datetime={post.pubDate}>
+                    <time class="text-sm text-base-content/60 md:w-48 flex-shrink-0" datetime={post.pubDate}>
                       {formatDate(post.pubDate)}
                     </time>
                     <div class="flex-1 min-w-0">
-                      <h2 class="text-xl font-semibold mb-2 group-hover:text-primary transition-colors duration-200">
+                      <h2 class="text-xl font-semibold mb-2 group-hover:text-primary transition-colors duration-200 text-base-content">
                         {post.title}
                       </h2>
                       {post.tags.length > 0 && (
                         <div class="flex flex-wrap gap-2">
                           {post.tags.map((tag) => (
-                            <span class="text-xs px-2 py-1 rounded bg-border text-muted">{tag}</span>
+                            <span class="text-xs px-2 py-1 rounded bg-base-200 text-base-content/70">{tag}</span>
                           ))}
                         </div>
                       )}
                     </div>
                     {post.featured && (
-                      <span class="flex-shrink-0 px-3 py-1 text-xs font-medium rounded-full bg-primary text-dark">
+                      <span class="flex-shrink-0 px-3 py-1 text-xs font-medium rounded-full bg-primary text-primary-content">
                         Featured
                       </span>
                     )}
                     <svg
-                      class="w-5 h-5 text-muted flex-shrink-0 md:ml-auto"
+                      class="w-5 h-5 text-base-content/50 flex-shrink-0 md:ml-auto"
                       fill="none"
                       stroke="currentColor"
                       viewBox="0 0 24 24">

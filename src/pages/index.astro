@@ -1,6 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import BlogCard from '../components/BlogCard.astro';
+import BlogCard from '../components/BlogCard';
 import { getCollection } from 'astro:content';
 
 const posts = await getCollection('blog');
@@ -11,7 +11,7 @@ const posts = await getCollection('blog');
     <div class="max-w-6xl mx-auto">
       <div class="flex items-center justify-between mb-12">
         <h1 class="text-5xl md:text-7xl font-display font-bold">Latest Posts</h1>
-        <a href="/blog" class="text-primary hover:text-off-white transition-colors duration-200 font-medium">
+        <a href="/blog" class="text-primary hover:text-base-content/80 transition-colors duration-200 font-medium">
           View All →
         </a>
       </div>
@@ -21,7 +21,7 @@ const posts = await getCollection('blog');
           posts.map((post) => (
             <BlogCard
               title={post.data.title}
-              slug={post.slug}
+              slug={post.id}
               date={post.data.pubDate.split('T')[0]}
               excerpt={post.data.excerpt || ''}
               tags={post.data.tags}

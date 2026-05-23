@@ -20,12 +20,12 @@ if (lineMatch) {
   code = code.split('\n').slice(start, end).join('\n');
 }
 
-const detectedLang = lang || url.split('.').pop()?.split('#')[0] || 'text';
+const detectedLang = (lang || url.split('.').pop()?.split('#')[0] || 'text') as any;
 ---
 
-<div class="github-code-container">
-  <div class="code-label">
-    <a href={url} target="_blank">{url.split('/').pop()?.split('#')[0]}</a>
+<div class="border border-base-300 rounded-lg my-8 bg-base-100 overflow-hidden github-code-container">
+  <div class="px-4 py-2 bg-base-200 border-b border-base-300 text-sm code-label">
+    <a href={url} target="_blank" class="text-base-content/70 no-underline hover:text-primary hover:underline transition-colors">{url.split('/').pop()?.split('#')[0]}</a>
   </div>
   <div class="p-5">
     <Code code={code} lang={detectedLang} theme="github-light-high-contrast" />
@@ -33,30 +33,10 @@ const detectedLang = lang || url.split('.').pop()?.split('#')[0] || 'text';
 </div>
 
 <style>
-  .github-code-container {
-    border: 1px solid #d0d7de;
-    border-radius: 8px;
-    margin: 2rem 0;
-    background: #ffffff;
-    overflow: hidden;
-  }
-  .github-code-container pre {
+  .github-code-container :global(pre) {
     white-space: pre-wrap !important;
     word-break: break-all !important;
     overflow-x: hidden !important;
-  }
-  .code-label {
-    padding: 0.5rem 1rem;
-    background: #f6f8fa;
-    border-bottom: 1px solid #d0d7de;
-    font-size: 0.8rem;
-  }
-  .code-label a {
-    color: #57606a;
-    text-decoration: none;
-  }
-  .code-label a:hover {
-    color: #0969da;
-    text-decoration: underline;
+    background-color: transparent !important;
   }
 </style>

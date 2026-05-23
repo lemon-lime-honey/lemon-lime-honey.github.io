@@ -1,17 +1,17 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-import { getCollection } from 'astro:content';
+import { getCollection, render } from 'astro:content';
 
 export async function getStaticPaths() {
   const posts = await getCollection('blog');
   return posts.map((post) => ({
-    params: { slug: post.slug },
+    params: { slug: post.id },
     props: { post },
   }));
 }
 
 const { post } = Astro.props;
-const { Content } = await post.render();
+const { Content } = await render(post);
 
 // Format date
 const formatDate = (date: Date) => {
@@ -34,7 +34,7 @@ const calculateReadingTime = (content: string) => {
 const allPosts = await getCollection('blog');
 const sortedPosts = allPosts.sort((a, b) => new Date(b.data.pubDate).getTime() - new Date(a.data.pubDate).getTime());
 
-const currentIndex = sortedPosts.findIndex((p) => p.slug === post.slug);
+const currentIndex = sortedPosts.findIndex((p) => p.id === post.id);
 const prevPost = currentIndex < sortedPosts.length - 1 ? sortedPosts[currentIndex + 1] : null;
 const nextPost = currentIndex > 0 ? sortedPosts[currentIndex - 1] : null;
 ---
@@ -48,23 +48,23 @@ const nextPost = currentIndex > 0 ? sortedPosts[currentIndex - 1] : null;
         <div class="flex flex-wrap gap-2 mb-6">
           {
             post.data.tags.map((tag) => (
-              <span class="text-xs font-medium px-3 py-1 rounded-full bg-border text-muted">{tag}</span>
+              <span class="text-xs font-medium px-3 py-1 rounded-full bg-base-200 text-base-content/70">{tag}</span>
             ))
           }
         </div>
 
         <!-- Title -->
-        <h1 class="text-4xl md:text-5xl lg:text-6xl font-display font-bold mb-6 leading-tight">
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-display font-bold mb-6 leading-tight text-base-content">
           {post.data.title}
         </h1>
 
         <!-- Meta -->
-        <div class="flex flex-wrap items-center gap-4 text-muted text-sm">
+        <div class="flex flex-wrap items-center gap-4 text-base-content/70 text-sm">
           <time datetime={post.data.pubDate}>
             {formatDate(post.data.pubDate.split('T')[0])}
           </time>
           <span>•</span>
-          <span>{calculateReadingTime(post.body)}</span>
+          <span>{calculateReadingTime(post.body || '')}</span>
         </div>
       </header>
 
@@ -74,15 +74,15 @@ const nextPost = currentIndex > 0 ? sortedPosts[currentIndex - 1] : null;
       </div>
 
       <!-- Navigation -->
-      <nav class="mt-20 pt-8 border-t border-border">
+      <nav class="mt-20 pt-8 border-t border-base-300">
         <div class="grid md:grid-cols-2 gap-8">
           {
             prevPost && (
               <a
-                href={`/blog/${prevPost.slug}`}
-                class="group flex flex-col gap-2 p-6 bg-card border border-border rounded-lg hover:border-primary/50 transition-all duration-300">
-                <span class="text-xs text-muted uppercase tracking-wider">Previous</span>
-                <span class="font-medium group-hover:text-primary transition-colors duration-200">
+                href={`/blog/${prevPost.id}`}
+                class="group flex flex-col gap-2 p-6 bg-base-100 border border-base-300 rounded-lg hover:border-primary/50 transition-all duration-300">
+                <span class="text-xs text-base-content/70 uppercase tracking-wider">Previous</span>
+                <span class="font-medium group-hover:text-primary transition-colors duration-200 text-base-content">
                   {prevPost.data.title}
                 </span>
               </a>
@@ -91,10 +91,10 @@ const nextPost = currentIndex > 0 ? sortedPosts[currentIndex - 1] : null;
           {
             nextPost && (
               <a
-                href={`/blog/${nextPost.slug}`}
-                class="group flex flex-col gap-2 p-6 bg-card border border-border rounded-lg hover:border-primary/50 transition-all duration-200 md:ml-auto">
-                <span class="text-xs text-muted uppercase tracking-wider">Next</span>
-                <span class="font-medium group-hover:text-primary transition-colors duration-200">
+                href={`/blog/${nextPost.id}`}
+                class="group flex flex-col gap-2 p-6 bg-base-100 border border-base-300 rounded-lg hover:border-primary/50 transition-all duration-200 md:ml-auto">
+                <span class="text-xs text-base-content/70 uppercase tracking-wider">Next</span>
+                <span class="font-medium group-hover:text-primary transition-colors duration-200 text-base-content">
                   {nextPost.data.title}
                 </span>
               </a>
@@ -107,7 +107,7 @@ const nextPost = currentIndex > 0 ? sortedPosts[currentIndex - 1] : null;
       <div class="mt-12 text-center">
         <a
           href="/blog"
-          class="inline-flex items-center gap-2 text-muted hover:text-primary transition-colors duration-200">
+          class="inline-flex items-center gap-2 text-base-content/70 hover:text-primary transition-colors duration-200">
           <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"
             ></path>
