@@ -1,0 +1,241 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { getCollection, render } from 'astro:content';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog');
+  return posts.map((post) => ({
+    params: { slug: post.id },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content, headings } = await render(post);
+
+// Format date
+const formatDate = (date: Date) => {
+  return date.toLocaleString('en-US', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+  });
+};
+
+// Calculate reading time
+const calculateReadingTime = (content: string) => {
+  const wordsPerMinute = 200;
+  const words = content.split(/\s+/).length;
+  const minutes = Math.ceil(words / wordsPerMinute);
+  return `${minutes} min read`;
+};
+
+// Get all posts for navigation
+const allPosts = await getCollection('blog');
+const sortedPosts = allPosts.sort((a, b) => new Date(b.data.pubDate).getTime() - new Date(a.data.pubDate).getTime());
+
+const currentIndex = sortedPosts.findIndex((p) => p.id === post.id);
+const prevPost = currentIndex < sortedPosts.length - 1 ? sortedPosts[currentIndex + 1] : null;
+const nextPost = currentIndex > 0 ? sortedPosts[currentIndex - 1] : null;
+
+// Related Posts based on overlapping tags
+const currentTags = post.data.tags || [];
+const relatedPosts = sortedPosts
+  .filter((p) => p.id !== post.id && p.data.tags)
+  .map((p) => {
+    const overlappingTags = p.data.tags.filter((tag) => currentTags.includes(tag)).length;
+    return { ...p, overlappingTags };
+  })
+  .filter((p) => p.overlappingTags > 0)
+  .sort((a, b) => b.overlappingTags - a.overlappingTags || new Date(b.data.pubDate).getTime() - new Date(a.data.pubDate).getTime())
+  .slice(0, 3);
+---
+
+<Layout title={`${post.data.title} | C A N D Y Blog`}>
+  <div class="pt-32 pb-20 px-6">
+    <div class="max-w-7xl mx-auto flex flex-col lg:flex-row gap-12">
+      <article class="flex-1 max-w-3xl lg:mx-auto">
+        <!-- Header -->
+        <header class="mb-12">
+          <!-- Tags -->
+          <div class="flex flex-wrap gap-2 mb-6">
+            {
+              post.data.tags.map((tag) => (
+                <a href={`/tags/${tag}`} class="text-xs font-medium px-3 py-1 rounded-full bg-base-200 text-base-content/70 hover:bg-primary/20 hover:text-primary transition-colors">
+                  #{tag}
+                </a>
+              ))
+            }
+          </div>
+
+          <!-- Title -->
+          <h1 class="text-4xl md:text-5xl lg:text-6xl font-display font-bold mb-6 leading-tight text-base-content">
+            {post.data.title}
+          </h1>
+
+          <!-- Meta -->
+          <div class="flex flex-wrap items-center gap-4 text-base-content/70 text-sm">
+            <time datetime={post.data.pubDate as unknown as string}>
+              {formatDate(new Date(post.data.pubDate))}
+            </time>
+            <span>•</span>
+            <span>{calculateReadingTime(post.body || '')}</span>
+          </div>
+        </header>
+
+        <!-- Content -->
+        <div class="prose prose-lg max-w-none">
+          <Content />
+        </div>
+
+        <!-- Navigation -->
+        <nav class="mt-20 pt-8 border-t border-base-300">
+          <div class="grid md:grid-cols-2 gap-8">
+            {
+              prevPost && (
+                <a
+                  href={`/blog/${prevPost.id}`}
+                  class="group flex flex-col gap-2 p-6 bg-base-100 border border-base-300 rounded-lg hover:border-primary/50 transition-all duration-300">
+                  <span class="text-xs text-base-content/70 uppercase tracking-wider">Previous</span>
+                  <span class="font-medium group-hover:text-primary transition-colors duration-200 text-base-content">
+                    {prevPost.data.title}
+                  </span>
+                </a>
+              )
+            }
+            {
+              nextPost && (
+                <a
+                  href={`/blog/${nextPost.id}`}
+                  class="group flex flex-col gap-2 p-6 bg-base-100 border border-base-300 rounded-lg hover:border-primary/50 transition-all duration-200 md:ml-auto">
+                  <span class="text-xs text-base-content/70 uppercase tracking-wider">Next</span>
+                  <span class="font-medium group-hover:text-primary transition-colors duration-200 text-base-content">
+                    {nextPost.data.title}
+                  </span>
+                </a>
+              )
+            }
+          </div>
+        </nav>
+
+        <!-- Related Posts -->
+        {relatedPosts.length > 0 && (
+          <div class="mt-16 pt-8 border-t border-base-300">
+            <h3 class="text-2xl font-bold mb-6 text-base-content">Related Posts</h3>
+            <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-6">
+              {relatedPosts.map((related) => (
+                <a href={`/blog/${related.id}`} class="group block">
+                  <div class="h-full p-5 bg-base-200/50 rounded-xl border border-transparent group-hover:border-primary/30 transition-all duration-300">
+                    <h4 class="font-medium text-base-content group-hover:text-primary transition-colors line-clamp-2 mb-2">
+                      {related.data.title}
+                    </h4>
+                    <time class="text-xs text-base-content/60">
+                      {formatDate(new Date(related.data.pubDate))}
+                    </time>
+                  </div>
+                </a>
+              ))}
+            </div>
+          </div>
+        )}
+
+        <!-- Back to Blog -->
+        <div class="mt-12 text-center">
+          <a
+            href="/blog"
+            class="inline-flex items-center gap-2 text-base-content/70 hover:text-primary transition-colors duration-200">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"
+              ></path>
+            </svg>
+            Back to all posts
+          </a>
+        </div>
+      </article>
+
+      <!-- Sidebar ToC -->
+      {headings.length > 0 && (
+        <aside class="hidden lg:block w-64 flex-shrink-0">
+          <div class="sticky top-32">
+            <h3 class="text-sm font-semibold uppercase tracking-wider text-base-content/70 mb-4">On this page</h3>
+            <ul class="space-y-2 text-sm" id="toc">
+              {headings.map((heading) => {
+                const paddingClass = heading.depth === 2 ? 'pl-0' : heading.depth === 3 ? 'pl-4' : 'pl-8';
+                return (
+                  <li class={paddingClass}>
+                    <a href={`#${heading.slug}`} class="text-base-content/60 hover:text-primary transition-colors block py-1">
+                      {heading.text}
+                    </a>
+                  </li>
+                );
+              })}
+            </ul>
+          </div>
+        </aside>
+      )}
+    </div>
+  </div>
+</Layout>
+
+<script>
+  // Copy to clipboard functionality
+  const copyButtonLabel = "Copy";
+  const codeBlocks = Array.from(document.querySelectorAll("pre"));
+
+  for (const codeBlock of codeBlocks) {
+    const wrapper = document.createElement("div");
+    wrapper.style.position = "relative";
+    wrapper.className = "group";
+
+    const copyButton = document.createElement("button");
+    copyButton.className = "copy-code btn btn-xs btn-neutral absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity duration-200 text-xs";
+    copyButton.innerHTML = copyButtonLabel;
+
+    codeBlock.setAttribute("tabindex", "0");
+    
+    // wrap codeblock with relative div
+    codeBlock.parentNode?.insertBefore(wrapper, codeBlock);
+    wrapper.appendChild(codeBlock);
+    wrapper.appendChild(copyButton);
+
+    copyButton.addEventListener("click", async () => {
+      await copyCode(codeBlock, copyButton);
+    });
+  }
+
+  async function copyCode(block: HTMLPreElement, button: HTMLButtonElement) {
+    const code = block.querySelector("code");
+    const text = code?.innerText || "";
+
+    await navigator.clipboard.writeText(text);
+
+    // Visual feedback
+    button.innerText = "Copied!";
+    button.classList.add("btn-success");
+    button.classList.remove("btn-neutral");
+
+    setTimeout(() => {
+      button.innerText = copyButtonLabel;
+      button.classList.remove("btn-success");
+      button.classList.add("btn-neutral");
+    }, 2000);
+  }
+
+  // ToC Highlighting
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        document.querySelectorAll('#toc a').forEach((link) => {
+          link.classList.remove('text-primary', 'font-medium');
+          if (link.getAttribute('href') === `#${entry.target.id}`) {
+            link.classList.add('text-primary', 'font-medium');
+          }
+        });
+      }
+    });
+  }, { rootMargin: '-100px 0px -66% 0px' });
+
+  document.querySelectorAll('article h1, article h2, article h3, article h4, article h5, article h6').forEach((heading) => {
+    observer.observe(heading);
+  });
+</script>
