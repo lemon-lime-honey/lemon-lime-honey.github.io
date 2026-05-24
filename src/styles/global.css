@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@plugin "@tailwindcss/typography";
 @plugin "daisyui";
 
 @font-face {
@@ -25,7 +26,7 @@
 @theme {
 
   --font-display: "Interop", system-ui, sans-serif;
-  --font-body: "SUIT Variable", system-ui, sans-serif;
+  --font-sans: "SUIT Variable", system-ui, sans-serif;
   --font-mono: "goorm-sans-code", monospace;
 
   --radius-lg: 12px;
@@ -46,7 +47,7 @@ code {
   font-size: small;
 }
 
-.prose .prose-lg {
+.prose.prose-lg {
   line-height: 1.75;
 
   & h1 {
