@@ -2,6 +2,7 @@
 import '../styles/global.css';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
+import Search from "astro-pagefind/components/Search.astro";
 
 interface Props {
   title?: string;
@@ -33,26 +34,42 @@ const {
     <meta property="og:type" content="website" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
-    <meta property="og:image" content={new URL(image, Astro.site)} />
+    <meta property="og:image" content={new URL(image, Astro.site || 'http://localhost:4321')} />
     <meta property="og:url" content={Astro.url} />
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
-    <meta name="twitter:image" content={new URL(image, Astro.site)} />
+    <meta name="twitter:image" content={new URL(image, Astro.site || 'http://localhost:4321')} />
 
     <!-- Local Fonts -->
     <link rel="preload" href="/fonts/Interop-SemiBold.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="preload" href="/fonts/SUIT-Variable.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="preload" href="/fonts/goorm-sans-code.woff2" as="font" type="font/woff2" crossorigin />
   </head>
-  <body className="bg-base-100 text-base-content min-h-screen antialiased">
+  <body className="bg-base-100 text-base-content min-h-screen antialiased flex flex-col">
     <Navbar client:load currentPath={Astro.url.pathname} />
-    <main className="prose max-w-none flex-grow">
+    <main className="prose max-w-none flex-grow flex flex-col">
       <slot />
     </main>
     <Footer />
+
+    <dialog id="search-modal" class="modal modal-bottom sm:modal-middle">
+      <div class="modal-box p-0 bg-base-100 border border-base-300 max-h-[80vh] flex flex-col overflow-hidden">
+        <div class="p-4 border-b border-base-300 flex justify-between items-center bg-base-200/50">
+          <h3 class="font-bold text-lg">Search</h3>
+          <form method="dialog">
+            <button class="btn btn-sm btn-circle btn-ghost">✕</button>
+          </form>
+        </div>
+        <div class="p-4 overflow-y-auto flex-1 min-h-[400px]">
+          <Search id="search" className="pagefind-ui" uiOptions={{ showImages: false, showEmptyFilters: false }} />
+        </div>
+      </div>
+      <form method="dialog" class="modal-backdrop">
+        <button>close</button>
+      </form>
+    </dialog>
   </body>
 </html>
-
