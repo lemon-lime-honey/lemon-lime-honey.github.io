@@ -1,0 +1,37 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { getCollection } from 'astro:content';
+
+const allPosts = await getCollection('blog');
+const tags = allPosts.flatMap((post) => post.data.tags || []);
+const tagCounts = tags.reduce((acc, tag) => {
+  acc[tag] = (acc[tag] || 0) + 1;
+  return acc;
+}, {} as Record<string, number>);
+
+const sortedTags = Object.entries(tagCounts).sort((a, b) => b[1] - a[1]);
+---
+
+<Layout title="Tags | C A N D Y">
+  <div class="pt-32 pb-20 px-6">
+    <div class="max-w-4xl mx-auto">
+      <h1 class="text-5xl md:text-7xl font-display font-bold mb-12 text-base-content">Tags</h1>
+      
+      <div class="flex flex-col gap-2">
+        {sortedTags.map(([tag, count]) => (
+          <a 
+            href={`/tags/${tag}`} 
+            class="flex items-center justify-between p-4 bg-base-100 border border-base-300 rounded-lg hover:border-primary/50 hover:bg-base-200/50 transition-all duration-200 group"
+          >
+            <span class="text-lg font-medium group-hover:text-primary transition-colors text-base-content">
+              #{tag}
+            </span>
+            <span class="badge badge-neutral group-hover:badge-primary transition-colors">
+              {count} {count === 1 ? 'post' : 'posts'}
+            </span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </div>
+</Layout>

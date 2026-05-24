@@ -82,22 +82,29 @@ const formatDate = (date: Date) => {
         </div>
 
         <!-- Pagination UI -->
-        <div class="mt-12 flex justify-center gap-4">
-          {page.url.prev ? (
-            <a href={page.url.prev} class="btn btn-outline btn-sm">← Previous</a>
-          ) : (
-            <button class="btn btn-outline btn-sm btn-disabled" disabled>← Previous</button>
-          )}
-          
-          <span class="flex items-center px-4 text-sm font-medium text-base-content">
-            Page {page.currentPage} of {page.lastPage}
-          </span>
-          
-          {page.url.next ? (
-            <a href={page.url.next} class="btn btn-outline btn-sm">Next →</a>
-          ) : (
-            <button class="btn btn-outline btn-sm btn-disabled" disabled>Next →</button>
-          )}
+        <div class="mt-12 flex justify-center">
+          <div class="join">
+            {page.url.prev ? (
+              <a href={page.url.prev} class="join-item btn btn-outline btn-sm">«</a>
+            ) : (
+              <button class="join-item btn btn-outline btn-sm btn-disabled" disabled>«</button>
+            )}
+            
+            {Array.from({ length: page.lastPage }, (_, i) => i + 1).map((num) => (
+              <a 
+                href={num === 1 ? '/blog' : `/blog/${num}`} 
+                class={`join-item btn btn-outline btn-sm ${num === page.currentPage ? 'btn-active' : ''}`}
+              >
+                {num}
+              </a>
+            ))}
+            
+            {page.url.next ? (
+              <a href={page.url.next} class="join-item btn btn-outline btn-sm">»</a>
+            ) : (
+              <button class="join-item btn btn-outline btn-sm btn-disabled" disabled>»</button>
+            )}
+          </div>
         </div>
       </section>
     </div>
