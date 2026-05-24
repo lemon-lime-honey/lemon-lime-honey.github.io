@@ -15,7 +15,9 @@
 
 - `[DEP0205] DeprecationWarning: module.register() is deprecated` 경고가 Node 26 환경에서 `pnpm build` 또는 `dev` 시 터미널에 출력됨. 이는 업스트림 패키지 내부 로직 문제로, 실제 빌드 및 런타임 결과물에는 영향을 주지 않아 `package.json`의 스크립트 실행 명령어에서 억지로 숨기지 않고 그대로 두었음.
 
-## Next TODO
+- **블로그 최신순 정렬 및 페이지네이션 개선**: `src/pages/index.astro` 메인 페이지의 게시글 최신순 정렬 및 노출 개수 제한(5개) 적용. `src/pages/blog/[...page].astro`를 도입하여 블로그 전체 목록 페이지 정적 페이지네이션 구현 완료.
+
+## Next TODO (Prioritized)
 
 1. **블로그 디자인(UI/UX) 전면 개편**: React + DaisyUI 환경이 완비되었으므로, 이를 기반으로 블로그 메인 페이지(`src/pages/index.astro`) 및 개별 포스트 페이지(`src/pages/blog/[slug].astro`)의 레이아웃과 디자인을 개선.
 2. **React 컴포넌트 고도화**: 디자인 변경 사항에 맞추어 `BlogCard.tsx` 등 기존 컴포넌트의 스타일링 조정 및 애니메이션 효과 검토.

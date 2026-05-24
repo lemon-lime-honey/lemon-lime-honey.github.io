@@ -1,19 +1,26 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import { getCollection } from 'astro:content';
+import type { GetStaticPaths } from 'astro';
 
-// Get all blog posts sorted by date
-const allPosts = await getCollection('blog');
-const posts = allPosts
-  .map((post) => ({
-    title: post.data.title,
-    slug: post.id,
-    pubDate: post.data.pubDate,
-    updatedDate: post.data.updatedDate,
-    tags: post.data.tags,
-    featured: post.data.featured,
-  }))
-  .sort((a, b) => new Date(b.pubDate).getTime() - new Date(a.pubDate).getTime());
+export const getStaticPaths = (async ({ paginate }) => {
+  const allPosts = await getCollection('blog');
+  const sortedPosts = allPosts
+    .map((post) => ({
+      title: post.data.title,
+      slug: post.id,
+      pubDate: post.data.pubDate,
+      updatedDate: post.data.updatedDate,
+      tags: post.data.tags,
+      featured: post.data.featured,
+    }))
+    .sort((a, b) => new Date(b.pubDate).getTime() - new Date(a.pubDate).getTime());
+
+  // 10 posts per page
+  return paginate(sortedPosts, { pageSize: 10 });
+}) satisfies GetStaticPaths;
+
+const { page } = Astro.props;
 
 const formatDate = (date: Date) => {
   return new Date(date).toLocaleDateString('en-US', {
@@ -24,7 +31,7 @@ const formatDate = (date: Date) => {
 };
 ---
 
-<Layout title="Blog | C A N D Y">
+<Layout title={`Blog - Page ${page.currentPage} | C A N D Y`}>
   <div class="pt-32 pb-20 px-6">
     <div class="max-w-5xl mx-auto">
       <!-- Header -->
@@ -37,10 +44,10 @@ const formatDate = (date: Date) => {
         <div class="bg-base-100 border border-base-300 rounded-xl overflow-hidden">
           <div class="divide-y divide-base-300">
             {
-              posts.map((post) => (
+              page.data.map((post) => (
                 <a href={`/blog/${post.slug}`} class="block hover:bg-base-200/50 transition-colors duration-200">
                   <div class="p-6 md:p-8 flex flex-col md:flex-row md:items-center gap-4 md:gap-8">
-                    <time class="text-sm text-base-content/60 md:w-48 flex-shrink-0" datetime={post.pubDate}>
+                    <time class="text-sm text-base-content/60 md:w-48 flex-shrink-0" datetime={post.pubDate as unknown as string}>
                       {formatDate(post.pubDate)}
                     </time>
                     <div class="flex-1 min-w-0">
@@ -49,7 +56,7 @@ const formatDate = (date: Date) => {
                       </h2>
                       {post.tags.length > 0 && (
                         <div class="flex flex-wrap gap-2">
-                          {post.tags.map((tag) => (
+                          {post.tags.map((tag: string) => (
                             <span class="text-xs px-2 py-1 rounded bg-base-200 text-base-content/70">{tag}</span>
                           ))}
                         </div>
@@ -72,6 +79,25 @@ const formatDate = (date: Date) => {
               ))
             }
           </div>
+        </div>
+
+        <!-- Pagination UI -->
+        <div class="mt-12 flex justify-center gap-4">
+          {page.url.prev ? (
+            <a href={page.url.prev} class="btn btn-outline btn-sm">← Previous</a>
+          ) : (
+            <button class="btn btn-outline btn-sm btn-disabled" disabled>← Previous</button>
+          )}
+          
+          <span class="flex items-center px-4 text-sm font-medium text-base-content">
+            Page {page.currentPage} of {page.lastPage}
+          </span>
+          
+          {page.url.next ? (
+            <a href={page.url.next} class="btn btn-outline btn-sm">Next →</a>
+          ) : (
+            <button class="btn btn-outline btn-sm btn-disabled" disabled>Next →</button>
+          )}
         </div>
       </section>
     </div>
