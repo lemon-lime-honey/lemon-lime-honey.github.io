@@ -1,6 +1,6 @@
 ---
 title: '[Pilot Test Analysis System] 비디오 스트리밍 최적화, 텔레메트리 차트 시각화 및 PRT 분석 모델 구축'
-pubDate: 2026-04-18T11:20:00+0900
+pubDate: '2026-04-18T11:20:00+09:00'
 tags: [nginx, springboot, streaming, cache, react, leaflet, frontend, architecture, jpa, database]
 excerpt: 'Nginx 기반 비디오 스트리밍 최적화, 프레임 드랍 해소를 위한 차트 렌더링 마이그레이션 및 운전자 인지 반응 시간(PRT) 분석 모델 설계'
 ---

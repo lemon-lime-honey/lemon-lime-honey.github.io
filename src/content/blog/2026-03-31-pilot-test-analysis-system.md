@@ -1,6 +1,6 @@
 ---
 title: '[Pilot Test Analysis System] 공간 데이터 관리 및 프론트엔드 대시보드 렌더링 최적화'
-pubDate: 2026-03-31T23:30:00+0900
+pubDate: '2026-03-31T23:30:00+09:00'
 tags: [postgis, react, architecture, spatial]
 excerpt: 'PostGIS 기반 공간 데이터 아키텍처 도입 및 대시보드 UI 모듈화를 통한 렌더링 성능 최적화'
 ---

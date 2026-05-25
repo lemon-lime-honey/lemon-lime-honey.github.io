@@ -1,6 +1,6 @@
 ---
 title: '[Multi-Protocol Sensor Acquisition] 다중 프로토콜 CAN 파싱 및 실시간 동역학 추론 엔진 구축'
-pubDate: 2026-03-15T16:45:00+0900
+pubDate: '2026-03-15T16:45:00+09:00'
 tags: [kinematics, inference, algorithm]
 excerpt: '다양한 규격의 CAN 통신 데이터를 유연하게 파싱, 영속화하고 이를 바탕으로 실시간 차량 주행 상태를 추론하는 파이프라인'
 ---

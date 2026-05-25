@@ -1,6 +1,6 @@
 ---
 title: '[Real-Time Intersection Predictor] 실시간 교차로 예측 모듈 및 오프라인 라우팅 데몬 배포 자동화'
-pubDate: 2026-05-23T11:20:00+0900
+pubDate: '2026-05-23T11:20:00+09:00'
 tags: [rust, valhalla, systemd, podman, sqlite]
 excerpt: '실시간 GPS 좌표 기반 교차로 예측 코어 파이프라인 구축 및 라우팅 엔진의 컨테이너 기반 데몬화 배포'
 ---

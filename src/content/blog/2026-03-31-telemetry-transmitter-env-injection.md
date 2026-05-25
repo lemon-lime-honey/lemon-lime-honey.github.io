@@ -1,6 +1,6 @@
 ---
 title: '[Telemetry Data Transmitter] 환경 변수 기반 설정 주입 체계 개편'
-pubDate: 2026-03-31T21:15:00+0900
+pubDate: '2026-03-31T21:15:00+09:00'
 tags: [linux, environment, configuration]
 excerpt: '로컬 및 운영 서버 환경의 유연한 제어를 위한 envsubst 유틸리티 기반의 설정 주입 체계 도입'
 ---

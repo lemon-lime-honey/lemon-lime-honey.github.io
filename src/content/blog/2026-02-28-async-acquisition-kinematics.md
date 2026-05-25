@@ -1,6 +1,6 @@
 ---
 title: '[OBD Acquisition & Kinematics] 비동기 데이터 수집 체계 전환 및 동역학 분석 엔진 고도화'
-pubDate: 2026-02-28T11:15:00+0900
+pubDate: '2026-02-28T11:15:00+09:00'
 tags: [asyncio, kinematics, python]
 excerpt: '비동기식 I/O 런타임 도입을 통한 데이터 수집 주기 최적화 및 휠 스피드 기반 차량 동역학 추정 로직 구현'
 ---

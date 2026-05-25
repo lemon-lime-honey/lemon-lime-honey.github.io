@@ -1,6 +1,6 @@
 ---
 title: '[Pilot Test Analysis System] 네이티브 캔버스 차트 도입 및 다중 리포트 ZIP 스트리밍 파이프라인 구축'
-pubDate: 2026-04-25T15:30:00+0900
+pubDate: '2026-04-25T15:30:00+09:00'
 tags: [uplot, frontend, react, visualization, springboot, security, architecture, streaming]
 excerpt: '렌더링 성능 최적화를 위한 캔버스 기반 차트 마이그레이션 및 서버 메모리 누수 방지를 위한 다중 리포트 ZIP 스트리밍 아키텍처 구축'
 ---

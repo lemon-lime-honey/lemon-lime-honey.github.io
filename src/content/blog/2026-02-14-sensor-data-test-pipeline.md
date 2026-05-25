@@ -1,6 +1,6 @@
 ---
 title: '[OBD Acquisition & Kinematics] 다목적 차량 센서 데이터 테스트 파이프라인 구축'
-pubDate: 2026-02-14T14:30:00+0900
+pubDate: '2026-02-14T14:30:00+09:00'
 tags: [obd, python, tkinter, sqlite]
 excerpt: '차량용 네트워크 통신 안정성 검증, 센서 데이터 역직렬화 및 단위 테스트를 위한 분석 전담 모듈의 Python 기반 파이프라인 구축'
 ---

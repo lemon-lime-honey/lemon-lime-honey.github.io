@@ -1,6 +1,6 @@
 ---
 title: '[Pilot Test Analysis System] 3D 벡터 연산 최적화 및 공간 도메인 정규화'
-pubDate: 2026-05-09T14:30:00+0900
+pubDate: '2026-05-09T14:30:00+09:00'
 tags: [rust, influxdb, react, postgresql, architecture]
 excerpt: '향후 광역 단위 확장에 대비한 3D 공간 벡터 투영 연산 최적화, 시계열 쿼리 고도화 및 공간 도메인 정규화'
 ---

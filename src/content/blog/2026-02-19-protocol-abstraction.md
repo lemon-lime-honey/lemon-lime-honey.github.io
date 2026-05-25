@@ -1,6 +1,6 @@
 ---
 title: '[Multi-Protocol Sensor Acquisition] 프로토콜 설정의 추상화 및 의존성 역전'
-pubDate: 2026-02-19T22:45:00+0900
+pubDate: '2026-02-19T22:45:00+09:00'
 tags: [architecture, protocol, json]
 excerpt: '다차종 통신 테스트 환경을 위해 특정 프로토콜에 종속되었던 식별자와 페이로드 메타데이터를 외부 설정으로 격리한 의존성 역전 구조 도입'
 ---

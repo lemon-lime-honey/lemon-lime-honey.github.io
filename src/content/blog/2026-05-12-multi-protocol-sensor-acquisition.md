@@ -1,6 +1,6 @@
 ---
 title: '[Multi-Protocol Sensor Acquisition] 통합 프로토콜 기반 후진 상태 감지 및 판정 우선순위 최적화'
-pubDate: 2026-05-12T21:15:00+0900
+pubDate: '2026-05-12T21:15:00+09:00'
 tags: [protocol, pipeline, architecture, kinematics]
 excerpt: '통합 프로토콜 환경 내 신뢰성 있는 후진 기어 감지 및 동역학 추론 엔진의 제어 흐름·우선순위 최적화'
 ---

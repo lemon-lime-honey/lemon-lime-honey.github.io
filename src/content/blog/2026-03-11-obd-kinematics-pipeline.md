@@ -1,6 +1,6 @@
 ---
 title: '[OBD Acquisition & Kinematics] 실시간 차량 센서 수집 및 주행 궤적 시각화 파이프라인 구축'
-pubDate: 2026-03-11T22:45:00+0900
+pubDate: '2026-03-11T22:45:00+09:00'
 tags: [python, sqlite, concurrency, architecture]
 excerpt: '차량 내 진단 포트(OBD-II)를 통한 센서 데이터 고속 수집, 실시간 동역학 연산 및 로컬 시각화 아키텍처 구축 전반'
 ---

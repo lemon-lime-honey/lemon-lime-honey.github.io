@@ -1,6 +1,6 @@
 ---
 title: '[Telemetry API Server] 세션 기반 텔레메트리 집계 API 및 쿼리 파이프라인 최적화'
-pubDate: 2026-04-09T22:45:00+0900
+pubDate: '2026-04-09T22:45:00+09:00'
 tags: [influxdb, springboot, architecture, database]
 excerpt: '메모리 부하를 방지하기 위해 데이터베이스 엔진 내부에서 대규모 집계 연산을 직접 처리하는 InfluxDB 쿼리 아키텍처 재설계'
 ---

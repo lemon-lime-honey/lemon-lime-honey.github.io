@@ -1,6 +1,6 @@
 ---
 title: '[Telemetry API Server] 운전자 인지-반응(PRT) 분석 엔진 및 시계열 이벤트 클러스터링 고도화'
-pubDate: 2026-04-15T21:50:00+0900
+pubDate: '2026-04-15T21:50:00+09:00'
 tags: [java, timeseries, architecture, backend]
 excerpt: '단일 물리 조작 과다 계측으로 인한 통계 왜곡을 바로잡기 위한 시계열 이벤트 클러스터링 아키텍처 및 결측치 보정 로직 도입'
 ---

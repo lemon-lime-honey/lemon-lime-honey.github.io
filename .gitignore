@@ -237,3 +237,7 @@ $RECYCLE.BIN/
 
 # Windows shortcuts
 *.lnk
+
+### Astro & Front Matter CMS ###
+.astro/
+.frontmatter/

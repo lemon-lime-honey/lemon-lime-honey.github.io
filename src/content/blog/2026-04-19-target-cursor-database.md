@@ -1,6 +1,6 @@
 ---
 title: '[Telemetry Data Transmitter] 타겟 격리형 커서 데이터베이스 및 시계열 동기화 개선'
-pubDate: 2026-04-19T16:40:00+0900
+pubDate: '2026-04-19T16:40:00+09:00'
 tags: [sqlite, architecture, sync, timeseries]
 excerpt: '다중 타겟 데이터베이스 처리 시 발생하는 상태 간섭 해결을 위한 타겟 격리형 커서 데이터베이스 및 시계열 정규화 파이프라인 도입'
 ---

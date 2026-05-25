@@ -1,6 +1,6 @@
 ---
 title: '[OBD Acquisition & Kinematics] 차량 센서 데이터 수집 통신 파이프라인 구축 및 트러블슈팅'
-pubDate: 2026-01-15T21:42:00+0900
+pubDate: '2026-01-15T21:42:00+09:00'
 tags: [obd, pcan, uds]
 excerpt: '차량의 조향 및 페달 데이터를 수집하기 위한 비표준 확장 PID 스캔 한계와 PCAN-OBDonUDS API를 활용한 통신 안정성 확보 과정'
 ---

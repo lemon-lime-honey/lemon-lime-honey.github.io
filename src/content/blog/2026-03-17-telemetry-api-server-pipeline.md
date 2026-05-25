@@ -1,6 +1,6 @@
 ---
 title: '[Telemetry API Server] 실시간 주행 데이터 수집 파이프라인 구축 및 동적 스키마 아키텍처 전환'
-pubDate: 2026-03-17T23:20:00+0900
+pubDate: '2026-03-17T23:20:00+09:00'
 tags: [springboot, influxdb, architecture, security]
 excerpt: '다양한 센서 프로토콜 수용을 위한 Spring Boot 및 InfluxDB 기반의 동적 스키마 텔레메트리 파이프라인 개편'
 ---

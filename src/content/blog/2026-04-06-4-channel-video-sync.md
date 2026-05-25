@@ -1,6 +1,6 @@
 ---
 title: '[Pilot Test Analysis System] 4채널 비디오 동기화 및 Web Worker 기반 데이터 처리'
-pubDate: 2026-04-06T21:15:00+0900
+pubDate: '2026-04-06T21:15:00+09:00'
 tags: [react, webworker, architecture, zustand]
 excerpt: '맵 렌더링 환경에서 다중 비디오와 대용량 텔레메트리 동시 재생 시 발생하는 블로킹 해결을 위한 상태 관리 개편 및 Web Worker 도입'
 ---

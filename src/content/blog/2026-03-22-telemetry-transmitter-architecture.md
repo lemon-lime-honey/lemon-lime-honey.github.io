@@ -1,6 +1,6 @@
 ---
 title: '[Telemetry Data Transmitter] 엣지 환경을 위한 다중 로컬 센서 데이터 동기화 및 원격 전송 워커 구축'
-pubDate: 2026-03-22T10:45:00+0900
+pubDate: '2026-03-22T10:45:00+09:00'
 tags: [rust, build, embedded, optimization]
 excerpt: 'Rust를 활용한 병렬 데이터베이스 동기화, 네트워크 추상화 및 다양한 엣지 디바이스 배포를 위한 정적 빌드 최적화'
 ---
