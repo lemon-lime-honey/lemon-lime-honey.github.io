@@ -9,6 +9,7 @@
   - Astro 6 Breaking Change 대응: `src/content/config.ts`를 `src/content.config.ts`로 이동하고 `glob` 로더 API로 스키마 구조 변경.
   - `src/pages/blog/[slug].astro`, `src/pages/index.astro`, `src/pages/blog/index.astro` 내에서 `post.render()`를 `render(post)`로 대체하고, `post.slug` 식별자 참조를 `post.id`로 전면 교체 완료.
   - `src/components/GithubCode.astro`의 스타일링을 HTML 인라인 클래스로 수정하고, 타입 오류(`lang`)를 `as any` 캐스팅으로 해결.
+- **기타 코드 개선**: TypeScript 린트 경고(`tag` implicitly `any` 타입 문제) 해결 및 Tailwind CSS 클래스 최적화(`flex-shrink-0` -> `shrink-0`).
 - **배포 파이프라인 업데이트**: `.github/workflows/deploy.yml`을 수정하여 GitHub Actions가 Node.js 26 환경에서 빌드되도록 명시.
 
 ## Known Issues

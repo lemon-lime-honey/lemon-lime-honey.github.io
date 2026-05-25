@@ -43,7 +43,7 @@ const currentTags = post.data.tags || [];
 const relatedPosts = sortedPosts
   .filter((p) => p.id !== post.id && p.data.tags)
   .map((p) => {
-    const overlappingTags = p.data.tags.filter((tag) => currentTags.includes(tag)).length;
+    const overlappingTags = p.data.tags.filter((tag: string) => currentTags.includes(tag)).length;
     return { ...p, overlappingTags };
   })
   .filter((p) => p.overlappingTags > 0)
@@ -60,7 +60,7 @@ const relatedPosts = sortedPosts
           <!-- Tags -->
           <div class="flex flex-wrap gap-2 mb-6">
             {
-              post.data.tags.map((tag) => (
+              post.data.tags.map((tag: string) => (
                 <a href={`/tags/${tag}`} class="text-xs font-medium px-3 py-1 rounded-full bg-base-200 text-base-content/70 hover:bg-primary/20 hover:text-primary transition-colors">
                   #{tag}
                 </a>
@@ -155,7 +155,7 @@ const relatedPosts = sortedPosts
 
       <!-- Sidebar ToC -->
       {headings.length > 0 && (
-        <aside class="hidden lg:block w-64 flex-shrink-0">
+        <aside class="hidden lg:block w-64 shrink-0">
           <div class="sticky top-32">
             <h3 class="text-sm font-semibold uppercase tracking-wider text-base-content/70 mb-4">On this page</h3>
             <ul class="space-y-2 text-sm" id="toc">
