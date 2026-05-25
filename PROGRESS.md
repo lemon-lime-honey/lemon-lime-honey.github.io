@@ -17,6 +17,7 @@
 - `[DEP0205] DeprecationWarning: module.register() is deprecated` 경고가 Node 26 환경에서 `pnpm build` 또는 `dev` 시 터미널에 출력됨. 이는 업스트림 패키지 내부 로직 문제로, 실제 빌드 및 런타임 결과물에는 영향을 주지 않아 `package.json`의 스크립트 실행 명령어에서 억지로 숨기지 않고 그대로 두었음.
 
 - **블로그 최신순 정렬 및 페이지네이션 개선**: `src/pages/index.astro` 메인 페이지의 게시글 최신순 정렬 및 노출 개수 제한(5개) 적용. `src/pages/blog/[...page].astro`를 도입하여 블로그 전체 목록 페이지 정적 페이지네이션 구현 완료.
+- **블로그 포스트 파일 저장 구조 체계화**: `src/content/blog/` 하위의 평평한 구조를 `src/content/blog/YYYY/MM/slug.md` (혹은 `.mdx`) 형식으로 연도 및 월별로 디렉토리를 나누어 체계적으로 리팩토링 완료. 이에 맞춰 MDX 내부의 `GithubCode` 컴포넌트 상대 경로를 자동 수정하고 빌드 검증 완료.
 
 ## Next TODO (Prioritized)
 
