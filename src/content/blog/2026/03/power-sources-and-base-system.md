@@ -1,6 +1,6 @@
 ---
-pubDate: 2026-03-15T14:20:05+09:00
 title: '[PowerSimCore / Models] 전원 및 변압기 모델 추가와 BaseSystem 단위계 통합'
+pubDate: '2026-03-15T14:20:05+09:00'
 tags: ['cpp', 'power system', 'impedance']
 excerpt: '단락 용량 기반 전원 객체와 변압기 설계 및 BaseSystem 싱글톤 패턴을 통한 기준 임피던스 로직 중앙화'
 ---

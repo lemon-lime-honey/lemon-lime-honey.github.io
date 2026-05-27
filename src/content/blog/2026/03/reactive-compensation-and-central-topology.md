@@ -1,6 +1,6 @@
 ---
-pubDate: 2026-03-22T20:55:30+09:00
 title: '[PowerSimCore / Models] 무효전력 보상 장치 추가 및 PowerSystem 중앙 위상 관리 구축'
+pubDate: '2026-03-22T20:55:30+09:00'
 tags: ['cpp', 'reactor', 'capacitor']
 excerpt: 'Reactor 및 Capacitor 컴포넌트 구현과 Bus 의존성 제거를 통한 PowerSystem 중심의 연결 토폴로지 설계 적용'
 ---

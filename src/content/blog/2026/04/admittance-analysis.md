@@ -1,6 +1,6 @@
 ---
-pubDate: '2026-04-23T23:45:10+09:00'
 title: '[PowerSimCore / analysis] 어드미턴스 행렬 구성 및 복소수 행렬 연산 유틸리티 구현'
+pubDate: '2026-04-23T23:45:10+09:00'
 tags: ['cpp', 'matrix math', 'admittance']
 excerpt: '동적 어드미턴스 행렬(Y-Bus) 생성을 위한 math 및 analysis 모듈 구축. 외부 라이브러리 없는 가우스-조르당 역행렬 알고리즘 적용.'
 ---

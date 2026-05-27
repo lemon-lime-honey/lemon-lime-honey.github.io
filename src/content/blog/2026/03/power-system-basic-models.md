@@ -1,6 +1,6 @@
 ---
-pubDate: 2026-03-08T18:45:12+09:00
 title: '[PowerSimCore / Models] 전력망 기초 컴포넌트(Load, Line, Bus) 구조 설계'
+pubDate: '2026-03-08T18:45:12+09:00'
 tags: ['cpp', 'power system', 'simulation', 'modeling']
 excerpt: 'C++ 기반 전력망 시뮬레이터를 위한 부하, 선로, 모선 객체 기본 구조 설계 및 교류 전력 계산 로직 구현'
 ---
