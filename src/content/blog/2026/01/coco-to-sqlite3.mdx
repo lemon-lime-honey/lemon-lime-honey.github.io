@@ -11,28 +11,28 @@ import GithubCode from '../../../../components/GithubCode.astro';
 
 ## 배경
 
-COCO 형식 annotation JSON 파일은 데이터가 작을 때는 필요할 때마다 직접 로드해 처리해도 무방하다. 그러나 단일 파일 크기가 수 GB 단위를 넘어가면 문제가 발생한다. 매번 JSON을 로드해 서브셋 annotation을 추출하면 다음과 같은 단점이 명확하다.
+COCO 형식 annotation JSON 파일은 데이터가 작을 때는 필요할 때마다 직접 로드해 처리해도 무방하다. 그러나 단일 파일 크기가 수 GB 단위를 넘어가면 문제가 발생한다. 매번 JSON을 로드해 서브셋 annotation을 추출하면 다음과 같은 단점이 존재한다.
 
 - 전체 파일 로딩에 따른 과도한 메모리 점유
 - 서브셋 추출 시 매번 수 분 이상 대기
 - 전처리 작업 반복으로 인한 생산성 저하
 
-실제 업무 중 Objects365 데이터셋에서 서브셋 폴더마다 특정 클래스 데이터만 추출하는 작업이 필요했다. 하지만 5.5GB 크기 단일 JSON 파일을 매번 파싱하고 필터링하는 데 상당한 시간이 소요되었다.
+실제 업무 중 Objects365 데이터셋에서 서브셋 폴더마다 특정 클래스 데이터만 추출하는 작업이 필요했다. 하지만 5.5GB 크기 단일 JSON 파일을 매번 파싱하고 필터링하는 데 많은 시간이 소요되었다.
 
-이에 annotation JSON을 SQLite DB로 우선 변환한 뒤, 필요 조건에 맞춰 SQL 쿼리로 서브셋을 즉시 추출하도록 파이프라인을 개선했다.
+이에 annotation JSON을 SQLite DB로 변환한 뒤, 필요 조건에 맞춰 SQL 쿼리로 서브셋을 즉시 추출하도록 파이프라인을 변경했다.
 
 ## 기존 방식의 한계
 
-현업에서는 보통 `pycocotools`로 JSON을 불러와 전체 annotation을 메모리에 적재한다. 그러나 개인 개발 환경에서는 이 과정에서 곧바로 메모리 부족 오류가 발생했다. 대용량 데이터셋에는 전체 로딩 방식이 부적합하므로, 스트리밍 파싱을 도입해 메모리 사용량을 낮출 필요가 있었다.
+현업에서는 보통 `pycocotools`로 JSON을 불러와 전체 annotation을 메모리에 적재한다. 그러나 개인 개발 환경에서는 이 과정에서 메모리 부족 오류가 발생했다. 대용량 데이터셋에는 전체 로딩 방식이 부적합하므로, 스트리밍 파싱을 적용해 메모리 사용량을 낮출 필요가 있었다.
 
 ## 개선: ijson 기반 스트리밍 처리
 
-대용량 JSON 파일이 메모리를 고갈시키는 현상을 막고자, `ijson` 라이브러리로 annotation, images, categories 항목을 스트리밍 파싱하도록 구조를 고쳤다.
+대용량 JSON 파일로 인한 메모리 부족 현상을 해결하기 위해, `ijson` 라이브러리로 annotation, images, categories 항목을 스트리밍 파싱하도록 구조를 변경했다.
 
-도입 효과는 다음과 같다.
+적용 효과는 다음과 같다.
 
 - 파일 전체 로드 없는 순차 처리
-- 메모리 사용량 대폭 감소
+- 메모리 사용량 감소
 - 대용량 데이터 처리 안정성 확보
 
 구현 단계는 아래와 같이 구성했다.
@@ -45,9 +45,9 @@ COCO 형식 annotation JSON 파일은 데이터가 작을 때는 필요할 때�
 
 ## Batch INSERT 및 Decimal 처리 이슈
 
-전체 데이터셋 기준 annotations 항목은 수천만 건에 달해 단건 INSERT 방식은 시간 효율이 낮다. 그래서 일정 단위로 묶어 `executemany`를 이용한 batch INSERT로 처리했다.
+전체 데이터셋 기준 annotations 항목은 수천만 건에 달해 단건 INSERT 방식은 비효율적이다. 따라서 일정 단위로 묶어 `executemany`를 이용한 batch INSERT로 처리했다.
 
-또한 `ijson` 파싱 과정에서 `Decimal` 타입이 추출되어 SQLite 바인딩과 JSON 직렬화 중 오류가 발생하는 문제도 확인되었다. 이는 아래와 같이 해결했다.
+또한 `ijson` 파싱 과정에서 `Decimal` 타입이 추출되어 SQLite 바인딩과 JSON 직렬화 중 오류가 발생하는 문제를 확인했다. 이는 아래와 같이 해결했다.
 
 - `Decimal`을 `float` 또는 `int`로 명시적 변환
 - batch INSERT 직전 타입 정규화 수행
@@ -56,23 +56,23 @@ COCO 형식 annotation JSON 파일은 데이터가 작을 때는 필요할 때�
 
 <GithubCode url="https://github.com/lemon-lime-honey/utils/blob/2dd155c2d89aa8fd7466e69711860c47fd411b04/coco-to-sqlite-convert.py#L134-L167" />
 
-이 조치로 대량 INSERT 성능을 끌어올렸으며, SQLite 바인딩과 직렬화 오류를 차단했다.
+이 방법으로 대량 INSERT 성능을 개선했으며, SQLite 바인딩과 직렬화 오류를 해결했다.
 
 ## 데이터 적재 후 인덱스 생성
 
-annotation 테이블은 데이터 적재 완료 후 다음과 같은 쿼리에 반복적으로 동원될 핵심 테이블이다.
+annotation 테이블은 데이터 적재 완료 후 다음과 같은 쿼리에 반복적으로 사용될 핵심 테이블이다.
 
 - 특정 image_id 조건 annotation 조회
 - 특정 category_id 필터링
 - 서브셋 폴더 내부 이미지 목록과 JOIN 연산
 
-이에 맞춰 `annotations.image_id`와 `annotations.category_id` 컬럼에 인덱스를 추가했다. 다만 대량 데이터 INSERT 도중 인덱스를 갱신하면 적재 성능이 저하되므로, 모든 INSERT 연산을 완료한 시점에 일괄 생성하도록 시점을 조정했다.
+이에 맞춰 `annotations.image_id`와 `annotations.category_id` 컬럼에 인덱스를 추가했다. 다만 대량 데이터 INSERT 도중 인덱스를 갱신하면 성능이 저하되므로, 모든 INSERT 연산을 완료한 시점에 일괄 생성하도록 시점을 변경했다.
 
 <GithubCode url="https://github.com/lemon-lime-honey/utils/blob/2dd155c2d89aa8fd7466e69711860c47fd411b04/coco-to-sqlite-convert.py#L182-L191" />
 
 ## 결과
 
-SQLite DB 변환 후 다음과 같은 작업을 수 초 내에 마칠 수 있게 되었다.
+SQLite DB 변환 후 다음과 같은 작업을 빠르게 처리할 수 있게 되었다.
 
 - 특정 서브셋 이미지 annotation 추출
 - 특정 클래스 포함 이미지 필터링

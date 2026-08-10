@@ -14,4 +14,4 @@ excerpt: '기반 클래스를 상속받은 차단기, 단로기, CT, PT 등의 �
 - 상태 정보만을 취급하는 순수 DTO 형태 `DisconnectingSwitch` 모델을 정의해 단순 개폐기 역할을 수행하도록 설계했다.
 - `InstrumentTransformer` 상속 기반 `CT` 및 `PT` 클래스를 구현하고, 표준 2차 측 정격인 5A와 110V를 각각 기본값으로 지정했다.
 - 컴포지션(Composition) 기법을 바탕으로 `PT`와 `CT` 인스턴스를 내부적으로 동시 캡슐화하는 `MOF` 모델을 추가했다.
-- 보호 협조 및 절연 조정을 목적으로 탭과 타임 레버를 기록하는 `Relay` 모델과 잔류 전압을 보관하는 `LightningArrester` 모델을 새로 도입했다.
+- 보호 협조 및 절연 조정을 위해 탭과 타임 레버를 기록하는 `Relay` 모델과 잔류 전압을 보관하는 `LightningArrester` 모델을 새로 도입했다.

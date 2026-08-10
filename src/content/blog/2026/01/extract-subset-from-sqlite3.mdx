@@ -11,28 +11,26 @@ import GithubCode from '../../../../components/GithubCode.astro';
 
 COCO 형식 대용량 annotation JSON을 다루다 보면 특정 디렉토리의 이미지 라벨이나 특정 클래스 라벨만 추출해야 하는 상황이 발생한다.
 
-Objects365처럼 용량이 매우 큰 데이터셋의 한계:
+Objects365처럼 용량이 큰 데이터셋의 한계:
 
-- JSON 전체 로딩/파싱 비용이 큼
-- 단순 스크립트로는 메모리 사용량이 급증함
+- JSON 전체 로딩/파싱 비용 증가
+- 단순 스크립트로는 메모리 사용량 급증
 - 반복적인 필터링 작업의 비효율성
 
-이에 annotation 데이터를 SQLite DB로 변환한 뒤, 필요할 때 DB 쿼리로 서브셋을 추출하는 방식을 도입했다.
+이에 annotation 데이터를 SQLite DB로 변환한 뒤, 필요할 때 DB 쿼리로 서브셋을 추출하는 방식을 적용했다.
 
-본 문서에서는:
+본 문서에서는 다음 사항을 한 번에 처리하는 스크립트를 정리한다:
 
 - 특정 이미지 폴더 기준 이미지 및 annotation 필터링
 - 필요 시 특정 category 추가 필터링
 - 대용량 처리를 위한 chunk 단위 쿼리
 
-위 사항을 한 번에 처리하는 스크립트를 정리한다.
-
 ## 사용 사례
 
 주요 사용 목적은 다음과 같다.
 
-- 특정 폴더에 복사된 이미지 기준으로 COCO JSON 생성
-- patch 단위로 JSON을 나누어 관리 (patch_0, patch_1, ...)
+- 특정 폴더에 위치한 이미지 기준으로 COCO JSON 생성
+- patch 단위로 JSON을 분할하여 관리 (patch_0, patch_1, ...)
 - 필요 시 category name이나 id 기준으로 클래스 필터링
 
 예시:
@@ -54,31 +52,31 @@ Objects365처럼 용량이 매우 큰 데이터셋의 한계:
 
 ## 이미지 기준 필터링
 
-우선 대상 이미지 폴더에 실제 존재하는 파일명을 기준으로 DB images 테이블에서 해당 이미지들만 선별한다.
+우선 대상 이미지 폴더에 존재하는 파일명을 기준으로 DB images 테이블에서 해당 이미지들만 선별한다.
 
-JSON 전체를 순회하는 대신 DB 쿼리와 파일명 매칭을 활용해 속도를 높였다.
+JSON 전체를 순회하는 대신 DB 쿼리와 파일명 매칭을 활용해 속도를 개선했다.
 
 <GithubCode url="https://github.com/lemon-lime-honey/utils/blob/47213769814f0ba32224857b672474545f138bf4/extract-subset-from-sqlite.py#L16-L53" />
 
 ## 대용량 annotations chunk 처리
 
-SQLite는 한 SQL 문장에 바인딩할 수 있는 변수 개수 상한선(`SQLITE_MAX_VARIABLE_NUMBER`)과 문장 자체 길이 제한(`SQLITE_MAX_SQL_LENGTH`)이 존재한다. `IN (...)` 절에 ID가 수천 개 이상 들어가면 이 제한에 걸려 쿼리가 실패할 위험이 크다. 이 문제를 방지하고자 `image_id` 목록을 chunk 단위로 나누어 다중 조회하도록 구현했다.
+SQLite는 한 SQL 문장에 바인딩할 수 있는 변수 개수 제한(`SQLITE_MAX_VARIABLE_NUMBER`)과 문장 길이 제한(`SQLITE_MAX_SQL_LENGTH`)이 존재한다. `IN (...)` 절에 ID가 수천 개 이상 포함되면 제한으로 인해 쿼리가 실패할 수 있다. 이 문제를 해결하기 위해 `image_id` 목록을 chunk 단위로 분할하여 조회하도록 구현했다.
 
 <GithubCode url="https://github.com/lemon-lime-honey/utils/blob/47213769814f0ba32224857b672474545f138bf4/extract-subset-from-sqlite.py#L56-L80" />
 
-도입 효과는 다음과 같다:
+적용 효과는 다음과 같다:
 
-- 대용량 이미지 세트에서도 처리가 안정적임
+- 대용량 이미지 세트에서도 안정적인 처리 가능
 - 메모리 사용량 제어 용이
 
 ## category 기준 추가 필터링
 
-필요 시 category name이나 category id 기준으로 annotation을 추가 필터링할 수 있다.
+필요 시 category name이나 category id 기준으로 annotation을 추가로 필터링할 수 있다.
 
 - `target_category_names`
 - `target_category_ids`
 
-중 하나를 인자로 넘기면 내부에서 category_id 기준으로 변환해 쿼리에 반영한다.
+중 하나를 인자로 입력하면 내부에서 category_id 기준으로 변환해 쿼리에 반영한다.
 
 <GithubCode url="https://github.com/lemon-lime-honey/utils/blob/47213769814f0ba32224857b672474545f138bf4/extract-subset-from-sqlite.py#L8-L13" />
 
@@ -90,7 +88,7 @@ SQLite는 한 SQL 문장에 바인딩할 수 있는 변수 개수 상한선(`SQL
 - annotations
 - categories
 
-필요한 category만 남긴 뒤 patch 단위로 JSON 파일을 출력한다.
+필요한 category만 남긴 뒤 patch 단위로 JSON 파일을 생성한다.
 
 <GithubCode url="https://github.com/lemon-lime-honey/utils/blob/47213769814f0ba32224857b672474545f138bf4/extract-subset-from-sqlite.py#L111-L118" />
 
@@ -98,10 +96,10 @@ SQLite는 한 SQL 문장에 바인딩할 수 있는 변수 개수 상한선(`SQL
 
 ## 정리
 
-COCO 형식 대용량 annotation JSON을 통째로 메모리에 올리는 대신 SQLite DB로 변환해 서브셋을 쿼리하면:
+COCO 형식 대용량 annotation JSON을 통째로 메모리에 로드하는 대신 SQLite DB로 변환해 서브셋을 쿼리하면:
 
 - 속도
 - 메모리 사용량
 - 반복 작업 자동화
 
-측면에서 처리 효율을 극적으로 개선할 수 있다.
+측면에서 처리 효율을 개선할 수 있다.
