@@ -241,3 +241,6 @@ $RECYCLE.BIN/
 ### Astro & Front Matter CMS ###
 .astro/
 .frontmatter/
+
+# etc
+.*/
